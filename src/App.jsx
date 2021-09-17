@@ -17,6 +17,7 @@ import { ShelterLogin } from './components/pages/ShelterLogin/ShelterLogin'
 import { Logout } from './components/shared/Logout/Logout'
 
 import { UserProfile } from './components/pages/UserProfile/UserProfile';
+import { Button } from './components/shared/Button/Button'
 
 
 import './App.scss';
@@ -56,6 +57,7 @@ function App() {
         </div> */}
             <AppRouter />
             <Menu />
+            <Button />
       </UserContext.Provider>
     </>
   );
