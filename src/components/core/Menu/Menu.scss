@@ -9,6 +9,8 @@ top: -999px;
 .align {
 display: grid;
 place-items: center;
+position: absolute;
+bottom: 0;
 }
 
 :root {
@@ -20,7 +22,7 @@ body {
 background-color: var(--body-background-color);
 color: var(--body-color);
 margin: 0;
-min-block-size: 100vh;
+width: 100%;
 }
 
 /* modules/anchor.css */
@@ -67,12 +69,16 @@ max-inline-size: 100%;
 background-color: var(--navigation-background-color);
 border-radius: var(--navigation-border-radius);
 box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.3);
+width: 100%;
+display: flex;
+justify-content: center;
 }
 
 .navigation ul {
 list-style: none;
 margin: 0;
 padding: 0;
+
 }
 
 .navigation a {
