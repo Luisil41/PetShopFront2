@@ -19,6 +19,7 @@ import {Logout} from './components/shared/Logout/Logout'
 import { UserProfile } from './components/pages/UserProfile/UserProfile';
 
 import './App.scss';
+import PetCard from './components/shared/PetCard/PetCard';
 
 export const UserContext = React.createContext(null)
 
@@ -35,13 +36,21 @@ function App() {
     }
   };
 
+  const [pets, setPets] = useState([]);
+  const getPets = async () => {
+      const petsFetch = await getAllPets();
+      setPets(petsFetch);
+    };
+
   useEffect(() => {
     checkUserSession();
+    getPets();
   }, []);
 
   return (
     <>
     <div className="App">
+    {pets.map((el) => (<PetCard pet={el}/>))}
     <AppRouter />
     <Menu />
       <UserContext.Provider value={{user, setUser}}>
@@ -57,7 +66,7 @@ function App() {
         {/* <Form onSubmit={funcionPrueba}>
           <Button type="submit">Hacer petición</Button>
         </Form> */}
-        <UserProfile id="6138ec73f336cdbe85e00540" />
+        <UserProfile id="6138ecb0f336cdbe85e00544" />
       </UserContext.Provider>
       
     </div>
