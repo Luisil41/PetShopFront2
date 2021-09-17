@@ -11,12 +11,12 @@ import  Menu  from './components/core/pending/Menu/Menu';
 // import {UserRegister} from './components/pages/UserRegister/UserRegister'
 // import {UserLogin} from './components/pages/UserLogin/UserLogin'
 
-import {ShelterRegister} from './components/pages/ShelterRegister/ShelterRegister'
-import {ShelterLogin} from './components/pages/ShelterLogin/ShelterLogin'
+// import {ShelterRegister} from './components/pages/ShelterRegister/ShelterRegister'
+// import {ShelterLogin} from './components/pages/ShelterLogin/ShelterLogin'
 
-import {Logout} from './components/shared/Logout/Logout'
+// import {Logout} from './components/shared/Logout/Logout'
 
-import { UserProfile } from './components/pages/UserProfile/UserProfile';
+// import { UserProfile } from './components/pages/UserProfile/UserProfile';
 
 import './App.scss';
 
@@ -24,6 +24,7 @@ export const UserContext = React.createContext(null)
 
 function App() {
   const [user, setUser] = useState(false);
+  
   
   const checkUserSession = async () => {
     const userFetch = await checkSession();
@@ -39,6 +40,8 @@ function App() {
     checkUserSession();
   }, []);
 
+
+
   return (
     <>
     <div className="App">
@@ -50,14 +53,14 @@ function App() {
         <UserLogin funct={checkSession} />
         <Logout funct={checkSession} />*/}
 
-        <h1>SHELTER</h1>
+        {/* <h1>SHELTER</h1>
         <ShelterRegister funct={checkSession} />
         <ShelterLogin funct={checkSession} />
-        <Logout funct={checkSession} />
+        <Logout funct={checkSession} /> */}
         {/* <Form onSubmit={funcionPrueba}>
           <Button type="submit">Hacer petición</Button>
-        </Form> */}
-        <UserProfile id="6138ec73f336cdbe85e00540" />
+         </Form> */}
+       {/* <UserProfile id="6138ec73f336cdbe85e00540" /> */}
       </UserContext.Provider>
       
     </div>
