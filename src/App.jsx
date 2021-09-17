@@ -54,7 +54,7 @@ function App() {
             {/* <div className="App">
           {pets.map((el) => (<PetCard key={el._id} pet={el}/>))}
         </div> */}
-            {/* <AppRouter /> */}
+            <AppRouter />
             <Menu />
       </UserContext.Provider>
     </>
