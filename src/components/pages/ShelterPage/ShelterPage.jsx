@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import { allShelters } from '../../../api/shelter.api';
 import { CardShelter } from '../../shared/CardShelter/CardShelter';
+import './ShelterPage.scss';
 
 export const ShelterPage = () => {
 
@@ -17,12 +18,12 @@ export const ShelterPage = () => {
     }, []);
 
     return (
-        <>
+        <div className="container">
             {shelters.map((e) => (
                 <>
                     <CardShelter shelter={e} />
                 </>
             ))}
-        </>
+        </div>
     )
 }

@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { checkSession } from './api/auth.api';
-import { getAllPets } from './api/pet.api';
 import { AppRouter } from './router/AppRouter';
-import Menu from './components/core/Menu/Menu';
+// import Menu from './components/core/Menu/Menu';
+import { PetsPage } from './components/pages/PetsPage/PetsPage';
+import { ShelterPage } from './components/pages/ShelterPage/ShelterPage';
 
 // import { Form } from './components/shared/Form/Form';
 // import { Button } from './components/shared/Button/Button';
 
 // import {UserRegister} from './components/pages/UserRegister/UserRegister'
 // import {UserLogin} from './components/pages/UserLogin/UserLogin'
+
 
 import { ShelterRegister } from './components/pages/ShelterRegister/ShelterRegister'
 import { ShelterLogin } from './components/pages/ShelterLogin/ShelterLogin'
@@ -18,7 +20,10 @@ import { ShelterLogin } from './components/pages/ShelterLogin/ShelterLogin'
 import { RegisterScreen } from './components/pages/RegisterScreen/RegisterScreen'
 
 
-import { Logout } from './components/shared/Logout/Logout'
+// import { Logout } from './components/shared/Logout/Logout'
+
+// import { UserProfile } from './components/pages/UserProfile/UserProfile';
+
 
 import { UserProfile } from './components/pages/UserProfile/UserProfile';
 // import { Button } from './components/shared/Button/Button'
@@ -43,23 +48,18 @@ function App() {
     }
   };
 
-  const [pets, setPets] = useState([]);
-  const getPets = async () => {
-    const petsFetch = await getAllPets();
-    setPets(petsFetch);
-  };
-
   useEffect(() => {
     checkUserSession();
-    getPets();
   }, []);
+
+
 
   return (
     <>
       <UserContext.Provider value={{ user, setUser }}>
-            {/* <div className="App">
-          {pets.map((el) => (<PetCard key={el._id} pet={el}/>))}
-        </div> */}
+            <div className="App">
+          
+        </div>
             <AppRouter />
             <Header title="¡ALERTA!" />
             {/* <RegisterScreen /> */}
