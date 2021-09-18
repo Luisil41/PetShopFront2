@@ -63,10 +63,11 @@ function App() {
         </div> */}
             <AppRouter />
             <Header title="¡ALERTA!" />
+            <RegisterScreen />
             <Menu />
             {/* <UserLogin /> */}
             {/* <LoginScreen /> */}
-            <RegisterScreen />
+            
       </UserContext.Provider>
     </>
   );
