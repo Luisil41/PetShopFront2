@@ -11,17 +11,22 @@ import Menu from './components/core/Menu/Menu';
 // import {UserLogin} from './components/pages/UserLogin/UserLogin'
 
 import { ShelterRegister } from './components/pages/ShelterRegister/ShelterRegister'
-import { UserRegister } from './components/pages/UserRegister/UserRegister'
-import { Login } from './components/pages/Login/Login'
+import { ShelterLogin } from './components/pages/ShelterLogin/ShelterLogin'
+// import { UserLogin } from './components/pages/UserLogin/UserLogin'
+// import { LoginScreen } from './components/pages/LoginScreen/LoginScreen'
+
+import { RegisterScreen } from './components/pages/RegisterScreen/RegisterScreen'
+
 
 import { Logout } from './components/shared/Logout/Logout'
 
 import { UserProfile } from './components/pages/UserProfile/UserProfile';
-import { NewPet } from './components/pages/NewPet/NewPet';
+// import { Button } from './components/shared/Button/Button'
 
 
 import './App.scss';
 import PetCard from './components/shared/PetCard/PetCard';
+import { Header } from './components/core/Header/Header';
 
 export const UserContext = React.createContext(null)
 
@@ -56,11 +61,12 @@ function App() {
           {pets.map((el) => (<PetCard key={el._id} pet={el}/>))}
         </div> */}
             <AppRouter />
-            {/* <Menu /> */}
-            {/* <ShelterRegister /> */}
-            {/* <UserRegister /> */}
-            <NewPet />
-            {/* <Login forUser={false} /> */}
+            <Header title="¡ALERTA!" />
+            <RegisterScreen />
+            <Menu />
+            {/* <UserLogin /> */}
+            {/* <LoginScreen /> */}
+            
       </UserContext.Provider>
     </>
   );

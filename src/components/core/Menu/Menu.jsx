@@ -1,51 +1,53 @@
+<<<<<<< HEAD
 import * as React from 'react';
+=======
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHome } from "@fortawesome/free-solid-svg-icons";
+import { faPaw } from "@fortawesome/free-solid-svg-icons";
+import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
+import { faBinoculars } from "@fortawesome/free-solid-svg-icons";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
+>>>>>>> f75e8a122fc90d550d62951d544ade57cc9d80a4
 
-import './Menu.scss';
+import "./Menu.scss";
 
 export default function Menu() {
-  const [value, setValue] = React.useState('recents');
+  const [value, setValue] = React.useState("recents");
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
   return (
-    <div class="align">
-
-      <nav class="navigation navigation--inline">
-        <ul>
-          <li>
-            <a href="#">
-              <i class='bx bxl-discord-alt'></i>
-              <span class="invisible">Home</span>
-            </a>
+      <nav className="navbar">
+        <ul className="nav__list">
+          <li className="list__element">
+            <div className="element__link">
+              <FontAwesomeIcon icon={faHome} />
+            </div>
           </li>
-          <li>
-            <a href="#">
-              <i class='bx bxl-discord-alt'></i>
-              <span class="invisible">Search</span>
-            </a>
+          <li className="list__element">
+            <div className="element__link">
+              <FontAwesomeIcon icon={faPaw} />
+            </div>
           </li>
-          <li>
-            <a href="#">
-              <i class='bx bxl-discord-alt'></i>
-              <span class="invisible">Products</span>
-            </a>
+          <li className="list__element">
+            <div className="element__link">
+              <FontAwesomeIcon icon={faPlusCircle} />
+            </div>
           </li>
-          <li>
-            <a href="#">
-              <i class='bx bxl-discord-alt'></i>
-              <span class="invisible">Notifications</span>
-            </a>
+          <li className="list__element">
+            <div className="element__link">
+              <FontAwesomeIcon icon={faBinoculars} />
+            </div>
           </li>
-          <li>
-            <a href="#">
-              <i class='bx bxl-discord-alt'></i>
-              <span class="invisible">Profile</span>
-            </a>
+          <li className="list__element">
+            <div className="element__link">
+              <FontAwesomeIcon icon={faUser} />
+            </div>
           </li>
         </ul>
       </nav>
-    </div>
   );
 }
