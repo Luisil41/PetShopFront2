@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Form } from '../Form/Form'
+import { Forms } from '../Forms/Forms'
 import { Button } from '../Button/Button'
 
 import { logout } from '../../../api/auth.api';
@@ -16,8 +16,8 @@ export const Logout = ({ funct }) => {
     }
 
     return (
-        <Form onSubmit={submitLogout} method="POST">
+        <Forms onSubmit={submitLogout} method="POST">
             <Button type="submit">Logout</Button>
-        </Form>
+        </Forms>
     )
 }
