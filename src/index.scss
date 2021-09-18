@@ -3,6 +3,8 @@ $color-secondary: #FFEFD1;
 $color-white: #FFFFFF;
 $color-black: #2C3341;
 body {
+    padding-top: 79px;
+    padding-bottom: 66px;
     box-sizing: border-box;
     margin: 0 auto;
     font-family: -apple-system, BlinkMacSystemFont, 'Roboto', 'Segoe UI', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
@@ -11,6 +13,8 @@ body {
 }
 
 #root {
+  box-sizing: border-box;
+  overflow-x: hidden;
   position: relative;
 }
 

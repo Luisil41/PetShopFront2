@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { deleteShelter, profileShelter } from "../../../api/shelter.api";
 import { Button } from "../../shared/Button/Button";
-import { Form } from "../../shared/Form/Form";
+import { Forms } from "../../shared/Forms/Forms";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import { faPhoneAlt } from "@fortawesome/free-solid-svg-icons";
@@ -60,11 +60,10 @@ export const ShelterProfile = ({ id }) => {
            {pets.map((el) => (<PetCard key={el._id} pet={el}/>))}
         </div>
         <div className="b-container__boxbtn">
-          <Button type="button">Peticiones</Button>
-          <Button type="button">Editar perfil</Button>
-          <Form onSubmit={submitForm} method="DELETE">
-            <Button type="submit">Eliminar perfil</Button>
-          </Form>
+          <Button type="button" className="button">Editar</Button>
+          <Forms onSubmit={submitForm} method="DELETE">
+            <Button type="submit" className="button">Eliminar</Button>
+          </Forms>
         </div>
       </div>
     </>
