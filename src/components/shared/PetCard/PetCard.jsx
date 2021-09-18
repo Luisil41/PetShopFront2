@@ -37,27 +37,3 @@ export function PetCard({ pet }) {
     </div>
   );
 }
-
-{
-  /* <div className="Card1">
-      <img
-        src="https://dogtime.com/assets/uploads/2011/03/puppy-development.jpg"
-        className="photo"
-      />
-      <div className="description">
-        <div className="line">
-          <h1 className="product_name">{pet.name}</h1>
-          
-          <h1 className="product_price">{pet.icon}</h1>
-        </div>
-        <h2>{pet.age} años</h2>
-        <p >
-         Raza: {pet.breed}
-        </p>
-        <p>
-         Tamaño: {pet.size}
-        </p>
-        <a href={url}>Saber más</a>
-      </div>
-    </div> */
-}

@@ -5,24 +5,43 @@ import { AppRouter } from './router/AppRouter';
 import { PetsPage } from './components/pages/PetsPage/PetsPage';
 import { ShelterPage } from './components/pages/ShelterPage/ShelterPage';
 
-
 // import { Form } from './components/shared/Form/Form';
 // import { Button } from './components/shared/Button/Button';
 
 // import {UserRegister} from './components/pages/UserRegister/UserRegister'
 // import {UserLogin} from './components/pages/UserLogin/UserLogin'
 
+<<<<<<< HEAD
 // import { ShelterRegister } from './components/pages/ShelterRegister/ShelterRegister'
 // import { ShelterLogin } from './components/pages/ShelterLogin/ShelterLogin'
+=======
+import { ShelterRegister } from './components/pages/ShelterRegister/ShelterRegister'
+import { ShelterLogin } from './components/pages/ShelterLogin/ShelterLogin'
+// import { UserLogin } from './components/pages/UserLogin/UserLogin'
+// import { LoginScreen } from './components/pages/LoginScreen/LoginScreen'
+
+import { RegisterScreen } from './components/pages/RegisterScreen/RegisterScreen'
+
+>>>>>>> development
 
 // import { Logout } from './components/shared/Logout/Logout'
 
 // import { UserProfile } from './components/pages/UserProfile/UserProfile';
 
+<<<<<<< HEAD
 
 
 import './App.scss';
 import { ShelterProfile } from './components/pages/ShelterProfile/ShelterProfile';
+=======
+import { UserProfile } from './components/pages/UserProfile/UserProfile';
+// import { Button } from './components/shared/Button/Button'
+
+
+import './App.scss';
+import PetCard from './components/shared/PetCard/PetCard';
+import { Header } from './components/core/Header/Header';
+>>>>>>> development
 
 export const UserContext = React.createContext(null)
 
