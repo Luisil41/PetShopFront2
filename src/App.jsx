@@ -4,7 +4,6 @@ import { getAllPets } from './api/pet.api';
 import { AppRouter } from './router/AppRouter';
 import Menu from './components/core/Menu/Menu';
 
-
 // import { Form } from './components/shared/Form/Form';
 // import { Button } from './components/shared/Button/Button';
 
@@ -12,11 +11,13 @@ import Menu from './components/core/Menu/Menu';
 // import {UserLogin} from './components/pages/UserLogin/UserLogin'
 
 import { ShelterRegister } from './components/pages/ShelterRegister/ShelterRegister'
-import { ShelterLogin } from './components/pages/ShelterLogin/ShelterLogin'
+import { UserRegister } from './components/pages/UserRegister/UserRegister'
+import { Login } from './components/pages/Login/Login'
 
 import { Logout } from './components/shared/Logout/Logout'
 
 import { UserProfile } from './components/pages/UserProfile/UserProfile';
+import { NewPet } from './components/pages/NewPet/NewPet';
 
 
 import './App.scss';
@@ -55,7 +56,11 @@ function App() {
           {pets.map((el) => (<PetCard key={el._id} pet={el}/>))}
         </div> */}
             <AppRouter />
-            <Menu />
+            {/* <Menu /> */}
+            {/* <ShelterRegister /> */}
+            {/* <UserRegister /> */}
+            <NewPet />
+            {/* <Login forUser={false} /> */}
       </UserContext.Provider>
     </>
   );

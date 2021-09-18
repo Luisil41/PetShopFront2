@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form } from '../../shared/Form/Form'
+import { Forms } from '../../shared/Forms/Forms'
 import { Input } from '../../shared/Input/Input'
 import { Button } from '../../shared/Button/Button'
 
@@ -23,10 +23,10 @@ export const UserLogin = ({ funct }) => {
     }
     
     return (
-        <Form onSubmit={submitLoginUser} method="POST">
+        <Forms onSubmit={submitLoginUser} method="POST">
             <Input type="email" name="email" placeholder="Correo Electrónico" label="Email" />
             <Input type="password" name="password" placeholder="Password" label="Contraseña" />
             <Button type="submit">Acceder</Button>
-        </Form>
+        </Forms>
     )
 }
