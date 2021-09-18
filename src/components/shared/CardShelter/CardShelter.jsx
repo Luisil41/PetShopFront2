@@ -7,20 +7,25 @@ import './CardShelter.scss';
 export const CardShelter = ({shelter}) => {
     const { name, avatar, province } = shelter;
     const url = 'https://www.mundoperros.es/wp-content/uploads/2016/02/protectoras-de-animales.jpg'
-     const style={
-        backgroundImage: `url("${url}")`,
+     const prueba={
+        backgroundImage: `url(${url})`,
         backgroundPosition: 'center',
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat'
-      }
+        
+      };
     const href = `/shelter/${shelter._id}`
+   
 
     return (
-        <div className="b-card" sytle={style} >
+        <>
+            <div style={prueba} className="b-card" >
+        
             <div className="b-card__box">
                 <h4 className="b-card__name"> <a className="b-card__link" href={href}>{name}</a></h4>
                 <p className="b-card__loc"><FontAwesomeIcon icon={faMapMarkerAlt} /> {province}</p>
             </div>
         </div>
+        </>
     )
 }

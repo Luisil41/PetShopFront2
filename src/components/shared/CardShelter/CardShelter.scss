@@ -3,10 +3,6 @@
     margin: 0 auto;
     width: 90%;
     height: 120px;
-    background-image: url("https://www.mundoperros.es/wp-content/uploads/2016/02/protectoras-de-animales.jpg");
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
     border-radius: 15px;
     -webkit-box-shadow: 0 3px 7px -3px $color-black;
     -moz-box-shadow: 0 3px 7px -3px $color-black;
@@ -18,8 +14,8 @@
     &__box {
         width: 45%;
         padding-right: 10px;
-        background-image: linear-gradient(to left, rgba(0, 0, 0, 1), rgba(255, 0, 0, 0));
-        height: 120px;
+        background-image: linear-gradient(to right, rgba(255, 0, 0, 0), rgba(0, 0, 0, 1));
+        height: 112px;
         border-radius: 15px;
         padding-top: 8px;
     }
