@@ -62,7 +62,7 @@ function App() {
         </div> */}
             <AppRouter />
             <Header title="¡ALERTA!" />
-            <RegisterScreen />
+            {/* <RegisterScreen /> */}
             <Menu />
             {/* <UserLogin /> */}
             {/* <LoginScreen /> */}

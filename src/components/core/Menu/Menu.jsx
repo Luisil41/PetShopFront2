@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-import * as React from 'react';
-=======
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHome } from "@fortawesome/free-solid-svg-icons";
@@ -8,7 +5,6 @@ import { faPaw } from "@fortawesome/free-solid-svg-icons";
 import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 import { faBinoculars } from "@fortawesome/free-solid-svg-icons";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
->>>>>>> f75e8a122fc90d550d62951d544ade57cc9d80a4
 
 import "./Menu.scss";
 
