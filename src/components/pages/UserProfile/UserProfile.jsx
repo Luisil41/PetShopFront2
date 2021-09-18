@@ -23,6 +23,7 @@ export const UserProfile = ({ id }) => {
 
     return (
         <>
+            
             <p>{user.fullName}</p>
             <p>{user.email}</p>
             <p>{user.phone}</p>
