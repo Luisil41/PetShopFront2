@@ -8,7 +8,7 @@ import { faPhoneAlt } from "@fortawesome/free-solid-svg-icons";
 import { getAllPets } from "../../../api/pet.api";
 import { PetCard } from '../../shared/PetCard/PetCard';
 
-// import PetCard from "../../shared/PetCard/PetCard";
+// esto no sirve import PetCard from "../../shared/PetCard/PetCard";
 import './ShelterProfile.scss';
 
 export const ShelterProfile = ({ id }) => {
