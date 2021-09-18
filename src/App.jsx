@@ -13,6 +13,11 @@ import Menu from './components/core/Menu/Menu';
 
 import { ShelterRegister } from './components/pages/ShelterRegister/ShelterRegister'
 import { ShelterLogin } from './components/pages/ShelterLogin/ShelterLogin'
+// import { UserLogin } from './components/pages/UserLogin/UserLogin'
+// import { LoginScreen } from './components/pages/LoginScreen/LoginScreen'
+
+import { RegisterScreen } from './components/pages/RegisterScreen/RegisterScreen'
+
 
 import { Logout } from './components/shared/Logout/Logout'
 
@@ -57,7 +62,9 @@ function App() {
         </div> */}
             <AppRouter />
             <Menu />
-            {/* <Button /> */}
+            {/* <UserLogin /> */}
+            {/* <LoginScreen /> */}
+            <RegisterScreen />
       </UserContext.Provider>
     </>
   );
