@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getAllPets } from '../../../api/pet.api';
 import{ PetCard }from '../../shared/PetCard/PetCard';
-import './PetsPage.scss';
-
 
 
 export function PetsPage() {
@@ -18,7 +16,7 @@ export function PetsPage() {
       }, []);
 
     return(
-        <div className="container">
+        <div className="container__cards">
             {pets.map((el) => (<PetCard key={el._id} pet={el}/>))}
         </div>
     );

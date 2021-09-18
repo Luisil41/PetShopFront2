@@ -8,7 +8,7 @@ import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 import "./Menu.scss";
 
-export default function Menu() {
+export function Menu() {
   const [value, setValue] = React.useState("recents");
 
   const handleChange = (event, newValue) => {
@@ -16,7 +16,7 @@ export default function Menu() {
   };
 
   return (
-      <nav className="navbar">
+      <nav className="navbar__container">
         <ul className="nav__list">
           <li className="list__element">
             <div className="element__link">
