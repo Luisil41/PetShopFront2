@@ -11,10 +11,7 @@ import { ShelterPage } from './components/pages/ShelterPage/ShelterPage';
 // import {UserRegister} from './components/pages/UserRegister/UserRegister'
 // import {UserLogin} from './components/pages/UserLogin/UserLogin'
 
-<<<<<<< HEAD
-// import { ShelterRegister } from './components/pages/ShelterRegister/ShelterRegister'
-// import { ShelterLogin } from './components/pages/ShelterLogin/ShelterLogin'
-=======
+
 import { ShelterRegister } from './components/pages/ShelterRegister/ShelterRegister'
 import { ShelterLogin } from './components/pages/ShelterLogin/ShelterLogin'
 // import { UserLogin } from './components/pages/UserLogin/UserLogin'
@@ -22,18 +19,12 @@ import { ShelterLogin } from './components/pages/ShelterLogin/ShelterLogin'
 
 import { RegisterScreen } from './components/pages/RegisterScreen/RegisterScreen'
 
->>>>>>> development
 
 // import { Logout } from './components/shared/Logout/Logout'
 
 // import { UserProfile } from './components/pages/UserProfile/UserProfile';
 
-<<<<<<< HEAD
 
-
-import './App.scss';
-import { ShelterProfile } from './components/pages/ShelterProfile/ShelterProfile';
-=======
 import { UserProfile } from './components/pages/UserProfile/UserProfile';
 // import { Button } from './components/shared/Button/Button'
 
@@ -41,7 +32,6 @@ import { UserProfile } from './components/pages/UserProfile/UserProfile';
 import './App.scss';
 import PetCard from './components/shared/PetCard/PetCard';
 import { Header } from './components/core/Header/Header';
->>>>>>> development
 
 export const UserContext = React.createContext(null)
 
@@ -71,9 +61,12 @@ function App() {
           
         </div>
             <AppRouter />
-            <ShelterProfile id="6141ff1628df17dd82445a9b" />
-            {/* <ShelterPage /> */}
-            {/* <Menu /> */}
+            <Header title="¡ALERTA!" />
+            {/* <RegisterScreen /> */}
+            <Menu />
+            {/* <UserLogin /> */}
+            {/* <LoginScreen /> */}
+            
       </UserContext.Provider>
     </>
   );

@@ -6,7 +6,6 @@ import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 import { faBinoculars } from "@fortawesome/free-solid-svg-icons";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 
-
 import "./Menu.scss";
 
 export default function Menu() {
