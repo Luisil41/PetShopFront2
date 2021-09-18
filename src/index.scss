@@ -1,9 +1,8 @@
-:root {
   $color-primary: #FDCB6E;
   $color-secondary: #FFEFD1;
   $color-white: #FFFFFF;
   $color-black: #2C3341;
-}
+  
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Roboto', 'Segoe UI', 'Oxygen',
@@ -11,6 +10,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  padding-bottom: 70px;
 }
 
 code {

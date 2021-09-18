@@ -27,6 +27,7 @@ import { UserProfile } from './components/pages/UserProfile/UserProfile';
 
 import './App.scss';
 import PetCard from './components/shared/PetCard/PetCard';
+import { Header } from './components/core/Header/Header';
 
 export const UserContext = React.createContext(null)
 
@@ -61,6 +62,7 @@ function App() {
           {pets.map((el) => (<PetCard key={el._id} pet={el}/>))}
         </div> */}
             <AppRouter />
+            <Header title="¡ALERTA!" />
             <Menu />
             {/* <UserLogin /> */}
             {/* <LoginScreen /> */}
