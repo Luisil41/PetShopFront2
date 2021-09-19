@@ -14,7 +14,7 @@ export const CardShelter = ({shelter}) => {
         backgroundRepeat: 'no-repeat'
         
       };
-    const href = `/shelter/${shelter._id}`
+    const href = `/profile/${shelter._id}`
    
 
     return (

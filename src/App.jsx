@@ -6,6 +6,10 @@ import { ProfileLayout } from "./components/layouts/ProfileLayout/ProfileLayout"
 import { HomeLayout } from "./components/layouts/HomeLayout/HomeLayout";
 import { LoginLayout } from "./components/layouts/LoginLayout/LoginLayout";
 import { RegisterLayout } from "./components/layouts/RegisterLayout/RegisterLayout";
+import { LostPetsLayout } from "./components/layouts/LostPetsLayout/LostPetsLayout";
+import { NewPetLayout } from "./components/layouts/NewPetLayout/NewPetLayout";
+
+
 
 import "./App.scss";
 
@@ -37,19 +41,34 @@ function App() {
   }, []);
 
   return (
-    
-      <UserContext.Provider value={{ user, setUser }}>
-        <Router>
+    <UserContext.Provider value={{ user, setUser }}>
+      <Router>
         <Header title="RescueMe!" />
+        <div className="main__container">
         <Switch>
-        <Route path="/register" exact><RegisterLayout /></Route>
-          <Route path="/login" exact><LoginLayout /></Route>
-          <Route path="/profile" exact><ProfileLayout /></Route>
-          <Route path="/"><HomeLayout /></Route>
+          <Route path="/pet/add" exact>
+            <NewPetLayout />
+          </Route>
+          <Route path="/pet/lost" exact>
+            <LostPetsLayout />
+          </Route>
+          <Route path="/register" exact>
+            <RegisterLayout />
+          </Route>
+          <Route path="/login" exact>
+            <LoginLayout />
+          </Route>
+          <Route path="/profile" exact>
+            <ProfileLayout />
+          </Route>
+          <Route path="/">
+            <HomeLayout />
+          </Route>
         </Switch>
+        </div>
         <Menu />
-    </Router>
-      </UserContext.Provider>
+      </Router>
+    </UserContext.Provider>
   );
 }
 
