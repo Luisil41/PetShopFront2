@@ -1,29 +1,24 @@
 @import '../../../index.scss';
-.b-container {
+.b-containershel {
     text-align: center;
     width: 100%;
     height: auto;
-    padding: 20px;
     border-radius: 20px;
-    background-color: $color-secondary;
     &__boximg {
         width: 100%;
-        height: auto;
-    }
-    &__img {
-        width: 100%;
-        height: auto;
-        border-radius: 20px;
+        height: 170px;
+        border-top-left-radius: 20px 20px;
+        border-top-right-radius: 20px 20px;
     }
     &__boxinfo {
         width: 100%;
         height: auto;
-        background-color: $color-secondary;
         padding: 5px;
         -webkit-box-shadow: 0 3px 7px -3px $color-secondary;
         -moz-box-shadow: 0 3px 7px -3px $color-secondary;
         box-shadow: 0 3px 7px -3px $color-secondary;
         border-bottom: 1em $color-black;
+        padding-top: 15px;
         padding-bottom: 15px;
     }
     &__name {

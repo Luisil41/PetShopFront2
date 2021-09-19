@@ -17,6 +17,7 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
+import { UserEditLayout } from "./components/layouts/UserEditLayout/UserEditLayout";
 
 
 export const UserContext = React.createContext(null);
@@ -44,6 +45,7 @@ function App() {
         <Header title="RescueMe!" />
         <div className="main__container">
           <Switch>
+            <Route path="/user/edit" exact component={UserEditLayout} />
             <Route path="/requests" exact component={AllRequestsLayout} />
             <Route path="/requests/:id" component={RequestLayout} />
             <Route path="/pet/add" exact component={NewPetLayout} />
