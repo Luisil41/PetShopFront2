@@ -8,7 +8,7 @@ import { LoginLayout } from "./components/layouts/LoginLayout/LoginLayout";
 import { RegisterLayout } from "./components/layouts/RegisterLayout/RegisterLayout";
 import { LostPetsLayout } from "./components/layouts/LostPetsLayout/LostPetsLayout";
 import { NewPetLayout } from "./components/layouts/NewPetLayout/NewPetLayout";
-
+import { RequestsLayout2 } from "./components/layouts/RequestsLayout2.jsx/RequestsLayout2";
 
 
 import "./App.scss";
@@ -20,6 +20,7 @@ import {
   Link,
   NavLink,
 } from "react-router-dom";
+
 
 export const UserContext = React.createContext(null);
 
@@ -46,6 +47,9 @@ function App() {
         <Header title="RescueMe!" />
         <div className="main__container">
         <Switch>
+        <Route path="/requests" exact>
+            <RequestsLayout2 />
+          </Route>
           <Route path="/pet/add" exact>
             <NewPetLayout />
           </Route>
