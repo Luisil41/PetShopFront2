@@ -17,7 +17,7 @@ export const Logout = ({ funct }) => {
 
     return (
         <Forms onSubmit={submitLogout} method="POST">
-            <Button type="submit">Logout</Button>
+            <Button className="button" type="submit">Logout</Button>
         </Forms>
     )
 }

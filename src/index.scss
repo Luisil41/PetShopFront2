@@ -79,3 +79,87 @@ code {
         color: $color-black;
     }
 }
+
+// Profile styles
+.b-container {
+    text-align: center;
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: $color-secondary;
+    &__boximg {
+        width: 100%;
+        height: auto;
+    }
+    &__img {
+        width: 100%;
+        height: auto;
+        border-radius: 20px;
+    }
+    &__boxinfo {
+        width: 100%;
+        height: auto;
+        background-color: $color-secondary;
+        padding: 5px;
+        -webkit-box-shadow: 0 3px 7px -3px $color-secondary;
+        -moz-box-shadow: 0 3px 7px -3px $color-secondary;
+        box-shadow: 0 3px 7px -3px $color-secondary;
+        border-bottom: 1em $color-black;
+        padding-bottom: 15px;
+    }
+    &__name {
+        margin-top: 0;
+        color: $color-black;
+    }
+    &__address {
+        color: $color-black;
+        font-size: 14px;
+        margin: 2px;
+        margin-top: 0px;
+        text-transform: capitalize;
+    }
+    &__province {
+        color: $color-black;
+        font-size: 14px;
+        text-transform: capitalize;
+        margin: 4px;
+    }
+    &__phone {
+        color: $color-black;
+        font-size: 14px;
+        margin: 4px;
+    }
+    &__boxdesc {
+        text-align: start;
+        padding: 15px;
+        margin-top: 30px;
+        background-color: $color-white;
+        border-top-left-radius: 20px 20px;
+        border-top-right-radius: 20px 20px;
+    }
+    &__titledesc {
+        color: $color-black;
+    }
+    &__desc {
+        color: $color-black;
+    }
+    &__boxpets {
+        text-align: start;
+        padding: 15px;
+        padding-top: 30px;
+        background-color: $color-white;
+        padding-bottom: 30px;
+        border-bottom-left-radius: 20px 20px;
+        border-bottom-right-radius: 20px 20px;
+    }
+    &__titlepets {
+        color: $color-black;
+    }
+    &__boxbtn {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin: 15px;
+    }
+}
