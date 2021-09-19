@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { deleteUser, profileUser } from '../../../api/user.api';
 import { Button } from '../../shared/Button/Button';
-import { Form } from '../../shared/Form/Form';
+import { Forms } from '../../shared/Forms/Forms';
 
 export const UserProfile = ({ id }) => {
     const [ user, setUser ] = useState({});
@@ -23,15 +23,16 @@ export const UserProfile = ({ id }) => {
 
     return (
         <>
+            
             <p>{user.fullName}</p>
             <p>{user.email}</p>
             <p>{user.phone}</p>
             <p>{user.province}</p>
             <p>{user.birthdate}</p>
 
-            <Form onSubmit={submitForm} method="DELETE">
+            <Forms onSubmit={submitForm} method="DELETE">
                 <Button type="submit">ELIMINAR</Button>
-            </Form>
+            </Forms>
         </>
     )
 }

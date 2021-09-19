@@ -5,24 +5,33 @@ import { AppRouter } from './router/AppRouter';
 import { PetsPage } from './components/pages/PetsPage/PetsPage';
 // import { ShelterPage } from './components/pages/ShelterPage/ShelterPage';
 
-
 // import { Form } from './components/shared/Form/Form';
 // import { Button } from './components/shared/Button/Button';
 
 // import {UserRegister} from './components/pages/UserRegister/UserRegister'
 // import {UserLogin} from './components/pages/UserLogin/UserLogin'
 
-// import { ShelterRegister } from './components/pages/ShelterRegister/ShelterRegister'
-// import { ShelterLogin } from './components/pages/ShelterLogin/ShelterLogin'
+
+import { ShelterRegister } from './components/pages/ShelterRegister/ShelterRegister'
+import { ShelterLogin } from './components/pages/ShelterLogin/ShelterLogin'
+// import { UserLogin } from './components/pages/UserLogin/UserLogin'
+// import { LoginScreen } from './components/pages/LoginScreen/LoginScreen'
+
+import { RegisterScreen } from './components/pages/RegisterScreen/RegisterScreen'
+
 
 // import { Logout } from './components/shared/Logout/Logout'
 
 // import { UserProfile } from './components/pages/UserProfile/UserProfile';
 
 
+import { UserProfile } from './components/pages/UserProfile/UserProfile';
+// import { Button } from './components/shared/Button/Button'
+
 
 import './App.scss';
-import { ShelterProfile } from './components/pages/ShelterProfile/ShelterProfile';
+import PetCard from './components/shared/PetCard/PetCard';
+import { Header } from './components/core/Header/Header';
 
 export const UserContext = React.createContext(null)
 
@@ -52,9 +61,18 @@ function App() {
           
         </div>
             <AppRouter />
+<<<<<<< HEAD
             {/* <ShelterProfile id="6141ff1628df17dd82445a9b" /> */}
             <PetsPage />
             {/* <Menu /> */}
+=======
+            <Header title="¡ALERTA!" />
+            {/* <RegisterScreen /> */}
+            <Menu />
+            {/* <UserLogin /> */}
+            {/* <LoginScreen /> */}
+            
+>>>>>>> 57218226684d2ca3d4e9300f5be839eaaf8d677b
       </UserContext.Provider>
     </>
   );

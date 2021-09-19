@@ -1,109 +1,46 @@
-.invisible {
-    left: -999px;
-    overflow: hidden;
-    position: absolute;
-    top: -999px;
-}
+@import "../../../index.scss";
 
-.align {
-    display: grid;
-    place-items: center;
-    position: absolute;
-    bottom: 0;
-}
+.navbar {
+  width: 100%;
+  height: 60px;
+  position: fixed;
+  bottom: 0;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, 0.2);
+  
 
-:root {
-    --body-background-color: #82a8ee;
-    --body-color: #97adc6;
-}
-
-body {
-    margin: 0;
-    width: 100%;
-}
-
-
-/* modules/anchor.css */
-
-a {
-    color: inherit;
-    outline: 0;
-}
-
-
-/* modules/icon.css */
-
-.icons {
-    display: none;
-}
-
-.icon {
-    block-size: 1em;
-    display: inline-block;
-    fill: currentcolor;
-    inline-size: 1em;
-    vertical-align: middle;
-}
-
-.icon--2x {
-    font-size: 2rem;
-}
-
-
-/* modules/image.css */
-
-svg {
-    max-inline-size: 100%;
-}
-
-
-/* modules/navigation.css */
-
-:root {
-    --navigation-background-color: #f0f6ff;
-    --navigation-border-radius: 0.25em;
-    --navigation-anchor-padding: 1.5em;
-}
-
-.navigation {
-    background-color: var(--navigation-background-color);
-    border-radius: var(--navigation-border-radius);
-    box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.3);
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-
-.navigation ul {
+  .nav__list {
+    height: 100%;
+    box-sizing: border-box;
     list-style: none;
     margin: 0;
-    padding: 0;
-}
-
-.navigation a {
-    display: block;
-    padding: var(--navigation-anchor-padding);
-    position: relative;
-    text-decoration: none;
-}
-
-.navigation a:focus::after,
-.navigation a:hover::after {
-    opacity: 1;
-}
-
-.navigation a::after {
-    block-size: 100%;
-    box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.3);
-    content: '';
-    inline-size: 100%;
-    left: 0;
-    opacity: 0;
-    position: absolute;
-    top: 0;
-    transition: opacity 0.3s;
-}
-
-.navigation--inline ul {
     display: flex;
+    justify-content: space-around;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 0px;
+
+    .list__element {
+      padding: 15px;
+      box-sizing: border-box;
+      width: 20%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(to bottom, $color-primary, $color-secondary);
+
+      .element__link {
+          font-size: 12pt;
+        color: $color-black;
+      }
+    }
+    .list__element:hover {
+      background: linear-gradient(to bottom, $color-primary, $color-white);
+    }
+  }
 }
