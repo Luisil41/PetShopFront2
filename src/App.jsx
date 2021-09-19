@@ -10,7 +10,6 @@ import { LostPetsLayout } from "./components/layouts/LostPetsLayout/LostPetsLayo
 import { NewPetLayout } from "./components/layouts/NewPetLayout/NewPetLayout";
 
 
-
 import "./App.scss";
 
 import {
