@@ -3,7 +3,7 @@ import { checkSession } from './api/auth.api';
 import { AppRouter } from './router/AppRouter';
 // import Menu from './components/core/Menu/Menu';
 import { PetsPage } from './components/pages/PetsPage/PetsPage';
-import { ShelterPage } from './components/pages/ShelterPage/ShelterPage';
+// import { ShelterPage } from './components/pages/ShelterPage/ShelterPage';
 
 
 // import { Form } from './components/shared/Form/Form';
@@ -52,8 +52,8 @@ function App() {
           
         </div>
             <AppRouter />
-            <ShelterProfile id="6141ff1628df17dd82445a9b" />
-            {/* <ShelterPage /> */}
+            {/* <ShelterProfile id="6141ff1628df17dd82445a9b" /> */}
+            <PetsPage />
             {/* <Menu /> */}
       </UserContext.Provider>
     </>
