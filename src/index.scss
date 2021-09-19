@@ -3,17 +3,21 @@ $color-secondary: #FFEFD1;
 $color-white: #FFFFFF;
 $color-black: #2C3341;
 body {
-    margin: 0;
+    box-sizing: border-box;
+    margin: 0 auto;
     font-family: -apple-system, BlinkMacSystemFont, 'Roboto', 'Segoe UI', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  position: relative;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
 .form {
   &__big-container {
       max-width: 100vw;
