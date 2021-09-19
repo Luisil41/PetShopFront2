@@ -3,7 +3,7 @@ import { requestByShelter } from '../../../api/request.api';
 import{ RequestCard }from '../../shared/RequestCard/RequestCard';
 
 
-export function RequestByUser({ id }) {
+export function RequestByShelter({ id }) {
     const [request, setRequest] = useState([]);
 
     const getRequest = async () => {
