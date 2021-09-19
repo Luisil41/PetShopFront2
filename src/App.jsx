@@ -17,12 +17,13 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
+import { NewFormLayout } from "./components/layouts/NewFormLayout/NewFormLayout";
 
 
 export const UserContext = React.createContext(null);
 
 function App() {
-  const [user, setUser] = useState(false);
+  const [user, setUser] = useState(null);
   console.log(user);
 
   const checkUserSession = async () => {
@@ -44,6 +45,7 @@ function App() {
         <Header title="RescueMe!" />
         <div className="main__container">
           <Switch>
+            <Route path="/user/new-form" exact component={NewFormLayout} />
             <Route path="/requests" exact component={AllRequestsLayout} />
             <Route path="/requests/:id" component={RequestLayout} />
             <Route path="/pet/add" exact component={NewPetLayout} />
