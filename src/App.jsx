@@ -1,37 +1,36 @@
-import React, { useState, useEffect } from 'react';
-import { checkSession } from './api/auth.api';
-import { getAllPets } from './api/pet.api';
-import { AppRouter } from './router/AppRouter';
-import  Menu  from './components/core/pending/Menu/Menu';
+import React, { useState, useEffect } from "react";
+import { checkSession } from "./api/auth.api";
+import { Header } from "./components/core/Header/Header";
+import { Menu } from "./components/core/Menu/Menu";
+import { ProfileLayout } from "./components/layouts/ProfileLayout/ProfileLayout";
+import { HomeLayout } from "./components/layouts/HomeLayout/HomeLayout";
+import { LoginLayout } from "./components/layouts/LoginLayout/LoginLayout";
+import { RegisterLayout } from "./components/layouts/RegisterLayout/RegisterLayout";
+import { LostPetsLayout } from "./components/layouts/LostPetsLayout/LostPetsLayout";
+import { NewPetLayout } from "./components/layouts/NewPetLayout/NewPetLayout";
+import { AllRequestsLayout } from './components/layouts/AllRequestsLayout/AllRequestsLayout';
+import { RequestLayout } from './components/layouts/RequestLayout/RequestLayout';
+
+import "./App.scss";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
 
 
-// import { Form } from './components/shared/Form/Form';
-// import { Button } from './components/shared/Button/Button';
-
-// import {UserRegister} from './components/pages/UserRegister/UserRegister'
-// import {UserLogin} from './components/pages/UserLogin/UserLogin'
-
-import {ShelterRegister} from './components/pages/ShelterRegister/ShelterRegister'
-import {ShelterLogin} from './components/pages/ShelterLogin/ShelterLogin'
-
-import {Logout} from './components/shared/Logout/Logout'
-
-import { UserProfile } from './components/pages/UserProfile/UserProfile';
-
-import './App.scss';
-
-export const UserContext = React.createContext(null)
+export const UserContext = React.createContext(null);
 
 function App() {
   const [user, setUser] = useState(false);
-  
+  console.log(user);
+
   const checkUserSession = async () => {
     const userFetch = await checkSession();
-
-    if (userFetch) {
-      setUser(userFetch);
-    } else {
+    if (userFetch === "Necesitas logearte para acceder.") {
       setUser(false);
+    } else if (userFetch) {
+      setUser(userFetch);
     }
   };
 
@@ -40,30 +39,25 @@ function App() {
   }, []);
 
   return (
-    <>
-    <div className="App">
-    <AppRouter />
-    <Menu />
-      <UserContext.Provider value={{user, setUser}}>
-        {/* <h1>USUARIO</h1>
-        <UserRegister funct={checkSession} />
-        <UserLogin funct={checkSession} />
-        <Logout funct={checkSession} />*/}
-
-        <h1>SHELTER</h1>
-        <ShelterRegister funct={checkSession} />
-        <ShelterLogin funct={checkSession} />
-        <Logout funct={checkSession} />
-        {/* <Form onSubmit={funcionPrueba}>
-          <Button type="submit">Hacer petición</Button>
-        </Form> */}
-        <UserProfile id="6138ec73f336cdbe85e00540" />
-      </UserContext.Provider>
-      
-    </div>
-    </>
+    <UserContext.Provider value={{user, setUser}}>
+      <Router>
+        <Header title="RescueMe!" />
+        <div className="main__container">
+          <Switch>
+            <Route path="/requests" exact component={AllRequestsLayout} />
+            <Route path="/requests/:id" component={RequestLayout} />
+            <Route path="/pet/add" exact component={NewPetLayout} />
+            <Route path="/pet/lost" exact component={LostPetsLayout} />
+            <Route path="/register" exac component={RegisterLayout} />
+            <Route path="/login" exact component={LoginLayout} />
+            <Route path="/profile" exact component={ProfileLayout} />
+            <Route path="/" component={HomeLayout} />
+          </Switch>
+        </div>
+        <Menu />
+      </Router>
+    </UserContext.Provider>
   );
-
 }
 
 export default App;

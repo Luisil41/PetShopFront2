@@ -17,12 +17,12 @@ export const ShelterPage = () => {
     }, []);
 
     return (
-        <>
+        <div className="container">
             {shelters.map((e) => (
                 <>
                     <CardShelter shelter={e} />
                 </>
             ))}
-        </>
+        </div>
     )
 }

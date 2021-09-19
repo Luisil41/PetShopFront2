@@ -1,0 +1,35 @@
+@import '../../../index.scss';
+.b-card {
+    margin: 0 auto;
+    width: 90%;
+    height: 120px;
+    border-radius: 15px;
+    -webkit-box-shadow: 0 3px 7px -3px $color-black;
+    -moz-box-shadow: 0 3px 7px -3px $color-black;
+    box-shadow: 0 3px 7px -3px $color-black;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 20px;
+    &__box {
+        width: 55%;
+        padding-right: 10px;
+        background-image: linear-gradient(to right, rgba(255, 0, 0, 0), rgba(0, 0, 0, 1));
+        height: 120px;
+        border-radius: 15px;
+        padding-top: 8px;
+        text-align: right;
+    }
+    &__name {
+        color: $color-white;
+        text-transform: capitalize;
+    }
+    &__loc {
+        color: $color-white;
+        text-transform: capitalize;
+    }
+    &__link {
+        text-decoration: none;
+        color: $color-white;
+    }
+}

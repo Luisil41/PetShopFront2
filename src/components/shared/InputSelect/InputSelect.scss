@@ -1,0 +1,38 @@
+@import '../../../index.scss';
+
+.input {
+    &__container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 10px 20px 5px 20px;
+        &-box {
+            display: flex;
+            justify-content: left;
+            width: 100%;
+        }
+    }
+    &__label {
+        display: block;
+        font-weight: 600;
+        font-size: 14px;
+        margin-bottom: 5px;
+        color: $color-black;
+    }
+    &__box {
+        font-family: 'Open Sans', sans-serif;
+        width: 100%;
+        border:none;
+        border-radius: 5px;
+        border-bottom: 2px solid #e2e2e2;
+        font-size: 15px;
+        padding: 8px;
+        margin-bottom: 5px;
+        color: $color-black;
+        &:focus {
+            outline: none;
+	        border: 2px solid $color-primary;
+        }
+    }
+}
