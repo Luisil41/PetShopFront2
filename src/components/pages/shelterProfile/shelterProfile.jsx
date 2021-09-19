@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { deleteShelter, profileShelter } from "../../../api/shelter.api";
 import { Button } from "../../shared/Button/Button";
 import { Forms } from "../../shared/Forms/Forms";
+import { Logout } from "../../shared/Logout/Logout";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import { faPhoneAlt } from "@fortawesome/free-solid-svg-icons";
@@ -64,6 +65,9 @@ export const ShelterProfile = ({ id }) => {
           <Forms onSubmit={submitForm} method="DELETE">
             <Button type="submit" className="button">Eliminar</Button>
           </Forms>
+        </div>
+        <div>
+          <Logout />
         </div>
       </div>
     </>

@@ -1,0 +1,42 @@
+@import '../../../index.scss';
+.b-card {
+    margin: 0 auto;
+    width: 90%;
+    height: 100px;
+    border-radius: 15px;
+    background-color: $color-primary;
+    -webkit-box-shadow: 0 3px 7px -3px $color-black;
+    -moz-box-shadow: 0 3px 7px -3px $color-black;
+    box-shadow: 0 3px 7px -3px $color-black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    &__boxuser {
+        padding-bottom: 0%;
+    }
+    &__nameuser {
+        margin-top: 40px;
+        margin-left: 15px;
+        color: $color-white;
+        text-transform: capitalize;
+    }
+    &__box {
+        padding-right: 10px;
+        height: 100px;
+        border-radius: 15px;
+        padding-top: 8px;
+        text-align: right;
+    }
+    &__name {
+        color: $color-white;
+    }
+    &__loc {
+        color: $color-white;
+        text-transform: capitalize;
+    }
+    &__link {
+        text-decoration: none;
+        color: $color-white;
+    }
+}
