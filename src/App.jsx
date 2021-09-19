@@ -8,16 +8,15 @@ import { LoginLayout } from "./components/layouts/LoginLayout/LoginLayout";
 import { RegisterLayout } from "./components/layouts/RegisterLayout/RegisterLayout";
 import { LostPetsLayout } from "./components/layouts/LostPetsLayout/LostPetsLayout";
 import { NewPetLayout } from "./components/layouts/NewPetLayout/NewPetLayout";
-import { RequestLayout } from "./components/layouts/RequestLayout/RequestLayout";
+import { RequestLayout } from './components/layouts/RequestLayout/RequestLayout'
 
 import "./App.scss";
-
-import { PrivateRoute } from './utils/PrivateRoute';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
 } from "react-router-dom";
+
 
 export const UserContext = React.createContext(null);
 
@@ -46,15 +45,15 @@ function App() {
         <Header title="RescueMe!" />
         <div className="main__container">
         <Switch>
+        <Route path="/requests" exact>
+            <RequestLayout />
+          </Route>
           <Route path="/pet/add" exact>
             <NewPetLayout />
           </Route>
           <Route path="/pet/lost" exact>
             <LostPetsLayout />
           </Route>
-
-          <PrivateRoute path="/requests" exact component={RequestLayout} isAuthenticated={user._id !== ''} />
-
           <Route path="/register" exact>
             <RegisterLayout />
           </Route>
