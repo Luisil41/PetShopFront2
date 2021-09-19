@@ -1,24 +1,26 @@
 import React, { useEffect, useState } from "react";
-import { deleteUser, profileUser } from "../../../api/user.api";
+import { deletePet, profilePet } from "../../../api/pet.api";
 import { Button } from "../../shared/Button/Button";
 import { Forms } from "../../shared/Forms/Forms";
 import { Logout } from "../../shared/Logout/Logout";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
-import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
-
-import { faPhoneAlt } from "@fortawesome/free-solid-svg-icons";
-import { getAllPets } from "../../../api/pet.api";
-import { PetCard } from "../../shared/PetCard/PetCard";
+import { faCat } from "@fortawesome/free-solid-svg-icons";
+import { faDog } from "@fortawesome/free-solid-svg-icons";
+import { faDove } from "@fortawesome/free-solid-svg-icons";
 
 // esto no sirve import PetCard from "../../shared/PetCard/PetCard";
+import "./ShelterProfile.scss";
 
-export const UserProfile = ({ id }) => {
-  const [user, setUser] = useState({});
+export const PetProfile = ({ id }) => {
+  const [pet, setPet] = useState({});
 
+  const getPet = async () => {
+    const petFetch = await profilePet(id);
+    setPet(petFetch);
+  };
   const url =
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsiLpDkdOBS_lUa160BCbkfRbHmjgf5v6EPA&usqp=CAU";
-
+    "https://dogtime.com/assets/uploads/2011/03/puppy-development.jpg";
   const prueba = {
     backgroundImage: `url(${url})`,
     backgroundPosition: "center",
@@ -26,19 +28,22 @@ export const UserProfile = ({ id }) => {
     backgroundRepeat: "no-repeat",
   };
 
-  const getUser = async () => {
-    const userFetch = await profileUser(id);
-    setUser(userFetch);
-  };
-
   useEffect(() => {
-    getUser();
+    getPet();
   }, []);
+
+  if (pet.type === "perro") {
+    pet.icon = <FontAwesomeIcon icon={faDog} />;
+  } else if (pet.type === "gato") {
+    pet.icon = <FontAwesomeIcon icon={faCat} />;
+  } else {
+    pet.icon = <FontAwesomeIcon icon={faDove} />;
+  }
 
   const submitForm = async (e) => {
     e.preventDefault();
 
-    await deleteUser(id);
+    await deletePet(id);
   };
 
   return (
@@ -46,25 +51,17 @@ export const UserProfile = ({ id }) => {
       <div className="b-container">
         <div style={prueba} className="b-container__boximg"></div>
         <div className="b-container__boxinfo">
-          <h3 className="b-container__name">{user.fullName}</h3>
-          <p className="b-container__address">
-            <FontAwesomeIcon icon={faMapMarkerAlt} /> {user.province}
+          <h3 className="b-container__name">{pet?.name}</h3>
+          <p className="b-container__phone">
+            {pet.icon} {' '} {shelter?.phone}
           </p>
-          {user.verified === true ? (
-            <p className="b-container__phone">
-              Usuario verificado <FontAwesomeIcon icon={faCheckCircle} />
-            </p>
-          ) : (
-            <p className="b-container__phone">Usuario no verificado</p>
-          )}
+          <p className="b-container__address">
+            <FontAwesomeIcon icon={faMapMarkerAlt} /> {pet?.province}
+          </p>
         </div>
         <div className="b-container__boxdesc">
-          <h4 className="b-container__titledesc">Intereses</h4>
-          {user.interest === "ambas" ? (
-            <p className="b-container__desc">Adopción y casa de acogida</p>
-          ) : (
-            <p>{user.interest}</p>
-          )}
+          <h4 className="b-container__titledesc">Descripción</h4>
+          <p className="b-container__desc"></p>
         </div>
         <div className="b-container__boxbtn">
           <Button type="button" className="button">
