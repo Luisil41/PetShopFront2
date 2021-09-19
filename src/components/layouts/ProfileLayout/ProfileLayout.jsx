@@ -5,10 +5,6 @@ import { Redirect } from "react-router-dom";
 import { ShelterProfile } from "../../pages/ShelterProfile/ShelterProfile";
 import { UserProfile } from "../../pages/UserProfile/UserProfile";
 
-<<<<<<< HEAD
-
-=======
->>>>>>> acf91f2ff52babd84c3d45b567424b75150bc165
 export const ProfileLayout = () => {
   const user = useContext(UserContext);
 

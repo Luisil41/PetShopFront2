@@ -8,12 +8,8 @@ import { LoginLayout } from "./components/layouts/LoginLayout/LoginLayout";
 import { RegisterLayout } from "./components/layouts/RegisterLayout/RegisterLayout";
 import { LostPetsLayout } from "./components/layouts/LostPetsLayout/LostPetsLayout";
 import { NewPetLayout } from "./components/layouts/NewPetLayout/NewPetLayout";
-<<<<<<< HEAD
-import { RequestsLayout2 } from "./components/layouts/RequestsLayout2.jsx/RequestsLayout2";
-=======
 import { AllRequestsLayout } from './components/layouts/AllRequestsLayout/AllRequestsLayout';
 import { RequestLayout } from './components/layouts/RequestLayout/RequestLayout';
->>>>>>> acf91f2ff52babd84c3d45b567424b75150bc165
 
 import "./App.scss";
 import {

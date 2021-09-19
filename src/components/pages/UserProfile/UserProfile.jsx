@@ -7,12 +7,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 
-import { faPhoneAlt } from "@fortawesome/free-solid-svg-icons";
-import { getAllPets } from "../../../api/pet.api";
-import { PetCard } from '../../shared/PetCard/PetCard';
-
-// esto no sirve import PetCard from "../../shared/PetCard/PetCard";
-
 
 export const UserProfile = ({ id }) => {
   const [user, setUser] = useState({});
