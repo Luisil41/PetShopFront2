@@ -1,23 +1,45 @@
-import React from "react";
+import React, { useContext } from "react";
+import { UserContext }from '../../../App';
 
 import "./RequestCard.scss";
 
 export const RequestCard = ({ user, pet, shelter }) => {
-  return (
+
+  const userGlobal = useContext(UserContext);
+  
+  if(userGlobal?.user.role === "user"){
+    return (
     <>
-      <div className="b-card">
-        <div className="b-card__boxuser">
-          <h4 className="b-card__nameuser">De {user?.fullName}</h4>
-        </div>
-        <div className="b-card__box">
-          <h4 className="b-card__name">
-              Petición para {pet?.name}
-          </h4>
-          <p className="b-card__loc">
-            Protectora {shelter?.name}
-          </p>
-        </div>
+      <div className="card">
+          <div className="card__imageBox">
+            <img className="card__image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2b9q7D5b1WahcJ_KthoB2-bbzH5L6Z7OPsw&usqp=CAU" alt="" />
+          </div>
+          <div className="card__infoBox">
+            <p className="card__text">
+              Has realizado una solicitud para {pet.name} de la protectora {shelter.name}.
+              Haz click para más información sobre esta solicitud.
+            </p>
+          </div>
       </div>
     </>
-  );
+  )
+  }else {
+    return (
+      <>
+        <div className="card">
+            <div className="card__imageBox">
+              <img className="card__image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS2b9q7D5b1WahcJ_KthoB2-bbzH5L6Z7OPsw&usqp=CAU" alt="" />
+            </div>
+            <div className="card__infoBox">
+              <p className="card__text">
+                Solicitud recibida para {pet.name} por {user.fullName}.
+                Haz click para más información sobre esta solicitud.
+              </p>
+            </div>
+        </div>
+      </>
+    )
+  }
+
+  
 };
