@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { requestByUser } from '../../../api/request.api';
 import { RequestCard } from '../../shared/RequestCard/RequestCard';
 
+import './RequestByUser.scss';
 
 export function RequestByUser({ id }) {
     const [request, setRequest] = useState([]);
@@ -24,7 +25,7 @@ export function RequestByUser({ id }) {
                 <h3>Solicitudes:</h3>
                 <div className="container__cards">
                     {request.map((el) => (
-                        <Link key={el._id} to={`/requests/${el._id}`}>
+                        <Link className="link" key={el._id} to={`/requests/${el._id}`}>
                             <RequestCard user={el.userId} shelter={el.shelterId} pet={el.petId}/>
                         </Link>
                         )
