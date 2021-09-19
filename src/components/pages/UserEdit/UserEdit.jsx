@@ -1,12 +1,14 @@
 import React, { useState, useContext, useEffect } from 'react';
+import { Formik, Form } from 'formik';
 
 import { Button } from '../../shared/Button/Button';
-import { Form } from '../../shared/Form/Form';
 import { Input } from '../../shared/Input/Input';
 import { InputSelect } from '../../shared/InputSelect/InputSelect';
 
 import { UserContext } from '../../../App';
 import { editUser, profileUser } from '../../../api/user.api';
+
+import provinces from '../../../utils/provinces';
 
 export const UserEdit = ({ id }) => {
 
@@ -40,70 +42,156 @@ export const UserEdit = ({ id }) => {
 
     return (
         <>
-            <h3>Editar Usuario</h3>
-            <Form onSubmit={submitForm} method="PUT">
-                <Input type="text" name="fullName" placeholder="Usuario" label="Usuario" onChange={handleOnChange} value={user?.fullName} />
-                <Input type="email" name="email" placeholder="Correo Electrónico" label="Correo Electrónico" onChange={handleOnChange} value={user?.email} />
-                <Input type="text" name="phone" placeholder="Teléfono" label="Teléfono" onChange={handleOnChange} value={user?.phone} />
-                <InputSelect name="province" label="Provincia" value={user.province} >
-                    <option value='alava'>Álava</option>
-                    <option value='albacete'>Albacete</option>
-                    <option value='alicante'>Alicante/Alacant</option>
-                    <option value='almeria'>Almería</option>
-                    <option value='asturias'>Asturias</option>
-                    <option value='avila'>Ávila</option>
-                    <option value='badajoz'>Badajoz</option>
-                    <option value='barcelona'>Barcelona</option>
-                    <option value='burgos'>Burgos</option>
-                    <option value='caceres'>Cáceres</option>
-                    <option value='cadiz'>Cádiz</option>
-                    <option value='cantabria'>Cantabria</option>
-                    <option value='castellon'>Castellón/Castelló</option>
-                    <option value='ceuta'>Ceuta</option>
-                    <option value='ciudadreal'>Ciudad Real</option>
-                    <option value='cordoba'>Córdoba</option>
-                    <option value='cuenca'>Cuenca</option>
-                    <option value='girona'>Girona</option>
-                    <option value='laspalmas'>Las Palmas</option>
-                    <option value='granada'>Granada</option>
-                    <option value='guadalajara'>Guadalajara</option>
-                    <option value='guipuzcoa'>Guipúzcoa</option>
-                    <option value='huelva'>Huelva</option>
-                    <option value='huesca'>Huesca</option>
-                    <option value='illesbalears'>Illes Balears</option>
-                    <option value='jaen'>Jaén</option>
-                    <option value='acoruña'>A Coruña</option>
-                    <option value='larioja'>La Rioja</option>
-                    <option value='leon'>León</option>
-                    <option value='lleida'>Lleida</option>
-                    <option value='lugo'>Lugo</option>
-                    <option value='madrid'>Madrid</option>
-                    <option value='malaga'>Málaga</option>
-                    <option value='melilla'>Melilla</option>
-                    <option value='murcia'>Murcia</option>
-                    <option value='navarra'>Navarra</option>
-                    <option value='ourense'>Ourense</option>
-                    <option value='palencia'>Palencia</option>
-                    <option value='pontevedra'>Pontevedra</option>
-                    <option value='salamanca'>Salamanca</option>
-                    <option value='segovia'>Segovia</option>
-                    <option value='sevilla'>Sevilla</option>
-                    <option value='soria'>Soria</option>
-                    <option value='tarragona'>Tarragona</option>
-                    <option value='santacruztenerife'>Santa Cruz de Tenerife</option>
-                    <option value='teruel'>Teruel</option>
-                    <option value='toledo'>Toledo</option>
-                    <option value='valencia'>Valencia/Valéncia</option>
-                    <option value='valladolid'>Valladolid</option>
-                    <option value='vizcaya'>Vizcaya</option>
-                    <option value='zamora'>Zamora</option>
-                    <option value='zaragoza'>Zaragoza</option>
-                </InputSelect>
-
-                <div style={{ marginTop: "40px" }}>
-                    <Button type="submit">Registrarme</Button>
+        <Formik
+          initialValues={{
+            fullName: '',
+            email: '',
+            password: '',
+            birthdate: '',
+            phone: '',
+            province: '',
+            avatar: ''
+          }}
+          validate={(values) => {
+            let errors = {}
+    
+            if (!values.email) {
+              errors.email = 'El campo correo es obligatorio.'
+            } else if (!/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(values.email)) {
+              errors.email = 'Ingresa un correo válido.'
+            }
+    
+            if (!values.password) {
+              errors.password = 'El campo contraseña es obligatorio.'
+            }
+    
+            if (!values.fullName) {
+              errors.fullName = 'El campo nombre es obligatorio.'
+            } else if (!/^[a-zA-Z ]{2,30}$/.test(values.fullName)) {
+              errors.fullName = 'El nombre solo puede contener letras y espacios.'
+            }
+    
+            if (!values.phone) {
+              errors.phone = 'El campo número de teléfono es obligatorio.'
+            } else if (values.phone.length !== 9 && !/^[679]{1}[0-9]{8}$/.test(values.phone)) {
+              errors.phone = 'Escribe un número de teléfono válido.'
+            }
+    
+            if (!values.province) {
+              errors.province = 'El campo provincia es obligatorio.'
+            }
+    
+            if (!values.birthdate) {
+              errors.birthdate = 'La fecha de nacimiento es obligatoria.'
+            }
+    
+            return errors;
+          }}
+          onSubmit={async(values) => {
+            // const r = await readAndUpload(values.avatar)
+            console.log('r');
+    
+            // userRegisterFetch(values);
+            
+          }}
+        >
+          {({ values, errors, touched, handleChange, handleBlur, setFieldValue }) => (
+            <div className="form__big-container">
+              <Form className="form__container">
+                <div className="form__box">
+                  <Input
+                    type="text"
+                    name="fullName"
+                    placeholder="Nombre de la protectora"
+                    label="Nombre"
+                    value={values.fullName}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  />
+                  {touched.fullName && errors.fullName && <div className="form__error">{errors.fullName}</div>}
                 </div>
-            </Form>
+                <div className="form__box">
+                  <Input
+                    type="email"
+                    name="email"
+                    placeholder="Correo electrónico"
+                    label="Correo electrónico"
+                    value={values.email}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  />
+                  {touched.email && errors.email && <div className="form__error">{errors.email}</div>}
+                </div>
+                <div className="form__box">
+                  <Input
+                    type="password"
+                    name="password"
+                    placeholder="Contraseña"
+                    label="Contraseña"
+                    value={values.password}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  />
+                  {touched.password && errors.password && <div className="form__error">{errors.password}</div>}
+                </div>
+                <div className="form__box">
+                  <Input
+                    type="text"
+                    name="phone"
+                    placeholder="Número de teléfono"
+                    label="Número de teléfono"
+                    value={values.phone}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  />
+                  {touched.phone && errors.phone && <div className="form__error">{errors.phone}</div>}
+                </div>
+                <div className="form__box">
+                  <Input
+                    type="date"
+                    name="birthdate"
+                    placeholder="Fecha de nacimiento"
+                    label="Fecha de nacimiento"
+                    value={values.birthdate}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  />
+                  {touched.birthdate && errors.birthdate && <div className="form__error">{errors.birthdate}</div>}
+                </div>
+                <div className="form__box">
+                  <InputSelect
+                    name="province"
+                    label="Provincia"
+                    value={values.province}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                  >
+                    {provinces.map((e) => (<option value={e.value} key={e.name}>{e.name}</option>))};
+                  </InputSelect>
+                  {touched.province && errors.province && <div className="form__error">{errors.province}</div>}
+                </div>
+                <div className="form__box">
+                  <Input
+                    type="file"
+                    name="avatar"
+                    placeholder="Imagen de portada"
+                    label="Imagen de portada"
+                    onChange={(e) => {
+                      setFieldValue("avatar", e.target.files[0])
+                    }}
+                    onBlur={handleBlur}
+                  />
+                  {touched.avatar && errors.avatar && <div className="form__error">{errors.avatar}</div>}
+                </div>
+    
+                <div className="form__button-box">
+                  <Button type="submit">Registrarse</Button>
+                </div>
+              </Form>
+            </div>
+          )}
+    
+        </Formik>
         </>
     )
 }

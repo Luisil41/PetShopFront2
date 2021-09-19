@@ -335,7 +335,7 @@ export const NewPet = () => {
               </div>
 
               <div className="form__button-box">
-                <Button type="submit">Añadir mascota</Button>
+                <Button type="submit">Añadir</Button>
               </div>
             </Form>
           </div>
