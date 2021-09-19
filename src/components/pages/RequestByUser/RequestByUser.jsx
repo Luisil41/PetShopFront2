@@ -17,7 +17,7 @@ export function RequestByUser({ id }) {
 
     return(
         <div className="container__cards">
-            {request.map((el) => (<RequestCard key={el._id} request={el}/>))}
+            {request.map((el) => (<RequestCard key={el._id} request={el.requests}/>))}
         </div>
     );
 }
