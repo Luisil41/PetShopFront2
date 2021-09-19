@@ -1,39 +1,27 @@
-import React, { useState, useEffect } from 'react';
-import { checkSession } from './api/auth.api';
-import { AppRouter } from './router/AppRouter';
-// import Menu from './components/core/Menu/Menu';
-import { PetsPage } from './components/pages/PetsPage/PetsPage';
-// import { ShelterPage } from './components/pages/ShelterPage/ShelterPage';
-
-// import { Form } from './components/shared/Form/Form';
-// import { Button } from './components/shared/Button/Button';
-
-// import {UserRegister} from './components/pages/UserRegister/UserRegister'
-// import {UserLogin} from './components/pages/UserLogin/UserLogin'
+import React, { useState, useEffect } from "react";
+import { checkSession } from "./api/auth.api";
+import { Header } from "./components/core/Header/Header";
+import { Menu } from "./components/core/Menu/Menu";
+import { ProfileLayout } from "./components/layouts/ProfileLayout/ProfileLayout";
+import { HomeLayout } from "./components/layouts/HomeLayout/HomeLayout";
+import { LoginLayout } from "./components/layouts/LoginLayout/LoginLayout";
+import { RegisterLayout } from "./components/layouts/RegisterLayout/RegisterLayout";
+import { LostPetsLayout } from "./components/layouts/LostPetsLayout/LostPetsLayout";
+import { NewPetLayout } from "./components/layouts/NewPetLayout/NewPetLayout";
 
 
-import { ShelterRegister } from './components/pages/ShelterRegister/ShelterRegister'
-import { ShelterLogin } from './components/pages/ShelterLogin/ShelterLogin'
-// import { UserLogin } from './components/pages/UserLogin/UserLogin'
-// import { LoginScreen } from './components/pages/LoginScreen/LoginScreen'
 
-import { RegisterScreen } from './components/pages/RegisterScreen/RegisterScreen'
+import "./App.scss";
 
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  NavLink,
+} from "react-router-dom";
 
-// import { Logout } from './components/shared/Logout/Logout'
-
-// import { UserProfile } from './components/pages/UserProfile/UserProfile';
-
-
-import { UserProfile } from './components/pages/UserProfile/UserProfile';
-// import { Button } from './components/shared/Button/Button'
-
-
-import './App.scss';
-import PetCard from './components/shared/PetCard/PetCard';
-import { Header } from './components/core/Header/Header';
-
-export const UserContext = React.createContext(null)
+export const UserContext = React.createContext(null);
 
 function App() {
   const [user, setUser] = useState(false);
@@ -52,29 +40,35 @@ function App() {
     checkUserSession();
   }, []);
 
-
-
   return (
-    <>
-      <UserContext.Provider value={{ user, setUser }}>
-            <div className="App">
-          
+    <UserContext.Provider value={{ user, setUser }}>
+      <Router>
+        <Header title="RescueMe!" />
+        <div className="main__container">
+        <Switch>
+          <Route path="/pet/add" exact>
+            <NewPetLayout />
+          </Route>
+          <Route path="/pet/lost" exact>
+            <LostPetsLayout />
+          </Route>
+          <Route path="/register" exact>
+            <RegisterLayout />
+          </Route>
+          <Route path="/login" exact>
+            <LoginLayout />
+          </Route>
+          <Route path="/profile" exact>
+            <ProfileLayout />
+          </Route>
+          <Route path="/">
+            <HomeLayout />
+          </Route>
+        </Switch>
         </div>
-            <AppRouter />
-<<<<<<< HEAD
-            {/* <ShelterProfile id="6141ff1628df17dd82445a9b" /> */}
-            <PetsPage />
-            {/* <Menu /> */}
-=======
-            <Header title="¡ALERTA!" />
-            {/* <RegisterScreen /> */}
-            <Menu />
-            {/* <UserLogin /> */}
-            {/* <LoginScreen /> */}
-            
->>>>>>> 57218226684d2ca3d4e9300f5be839eaaf8d677b
-      </UserContext.Provider>
-    </>
+        <Menu />
+      </Router>
+    </UserContext.Provider>
   );
 }
 

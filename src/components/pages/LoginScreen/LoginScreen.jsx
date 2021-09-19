@@ -1,8 +1,8 @@
 import React from 'react'
 import { Tabs, Tab, AppBar } from '@material-ui/core';
-import { UserLogin } from '../../pages/UserLogin/UserLogin';
-import { ShelterLogin } from '../../pages/ShelterLogin/ShelterLogin';
+
 import './LoginScreen.scss';
+import { Login } from '../Login/Login';
 
 
 export const LoginScreen = () => {
@@ -21,8 +21,8 @@ export const LoginScreen = () => {
                 <Tab label="Protectora" className="shelter"/>
             </Tabs>
         </AppBar>
-        {selectedTab === 0 && <UserLogin />}
-        {selectedTab === 1 && <ShelterLogin />}
+        {selectedTab === 0 && <Login forUser={true} />}
+        {selectedTab === 1 && <Login forUser={false} />}
         </>
     )
 }
