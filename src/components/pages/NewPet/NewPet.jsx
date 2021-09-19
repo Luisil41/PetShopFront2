@@ -1,81 +1,97 @@
-import React, { useContext } from 'react';
-import { Formik, Form } from 'formik';
+import React, { useContext } from "react";
+import { Formik, Form } from "formik";
 
-import { newPet } from '../../../api/pet.api';
+import { newPet } from "../../../api/pet.api";
 
-import { Input } from '../../shared/Input/Input';
-import { InputSelect } from '../../shared/InputSelect/InputSelect';
-import { Button } from '../../shared/Button/Button';
+import { Input } from "../../shared/Input/Input";
+import { InputSelect } from "../../shared/InputSelect/InputSelect";
+import { Button } from "../../shared/Button/Button";
 
-import provinces from '../../../utils/provinces';
+import provinces from "../../../utils/provinces";
 
-import { UserContext } from '../../../App';
+import { UserContext } from "../../../App";
 
 export const NewPet = () => {
-
   const user = useContext(UserContext);
 
   return (
     <>
+      <div>
+        {user.role === "shelter" ? (
+          <h3 className="main__title">Añade una nueva mascota</h3>
+        ) : (
+          <h3 className="main__title">¿Se ha perdido tu mascota?</h3>
+        )}
+      </div>
       <Formik
         initialValues={{
-          type: '',
-          name: '',
-          age: '',
-          sex: '',
-          breed: '',
-          size: '',
-          isVaccinated: '',
-          isSterilized: '',
-          isDewormed: '',
-          microchip: '',
-          province: user.user.province,
-          status: '',
-          avatar: '',
+          type: "",
+          name: "",
+          age: "",
+          sex: "",
+          breed: "",
+          size: "",
+          isVaccinated: "",
+          isSterilized: "",
+          isDewormed: "",
+          microchip: "",
+          province: user.province,
+          status: "",
+          avatar: "",
         }}
         validate={(values) => {
-          let errors = {}
+          let errors = {};
 
-          if (!values.type) errors.type = 'El tipo es obligatorio.';
+          if (!values.type) errors.type = "El tipo es obligatorio.";
 
           if (!values.name) {
-            errors.name = 'El nombre es obligatorio.'
+            errors.name = "El nombre es obligatorio.";
           } else if (!/^[a-zA-Z ]{2,30}$/.test(values.name)) {
-            errors.name = 'El nombre solo puede contener letras y espacios.'
+            errors.name = "El nombre solo puede contener letras y espacios.";
           }
 
           if (!values.age) {
-            errors.age = 'La edad es obligatoria.'
-          } else if(!/^[1-9][0-9]*$/.test(values.age)){
-            errors.age = 'Número inválido'
+            errors.age = "La edad es obligatoria.";
+          } else if (!/^[1-9][0-9]*$/.test(values.age)) {
+            errors.age = "Número inválido";
           }
 
           if (!values.breed) {
-            errors.breed = 'El raza es obligatoria.'
+            errors.breed = "El raza es obligatoria.";
           } else if (!/^[a-zA-Z ]{2,30}$/.test(values.breed)) {
-            errors.breed = 'La raza solo puede contener letras y espacios.'
+            errors.breed = "La raza solo puede contener letras y espacios.";
           }
 
-          if (!values.sex) errors.sex = 'El sexo es obligatorio.'
-          if (!values.size) errors.size= 'El tamaño es obligatorio.'
-          if (!values.isVaccinated) errors.isVaccinated= 'Este es obligatorio.'
-          if (!values.isSterilized) errors.isSterilized= 'Este es obligatorio.'
-          if (!values.isDewormed) errors.isDewormed= 'Este es obligatorio.'
-          if (!values.microchip) errors.microchip= 'Este es obligatorio.'
-          if (!values.province) errors.province= 'El campo provincia es obligatorio.'
-          if (!values.status) errors.status= 'Este es obligatorio.'
+          if (!values.sex) errors.sex = "El sexo es obligatorio.";
+          if (!values.size) errors.size = "El tamaño es obligatorio.";
+          if (!values.isVaccinated)
+            errors.isVaccinated = "Este es obligatorio.";
+          if (!values.isSterilized)
+            errors.isSterilized = "Este es obligatorio.";
+          if (!values.isDewormed) errors.isDewormed = "Este es obligatorio.";
+          if (!values.microchip) errors.microchip = "Este es obligatorio.";
+          if (!values.province)
+            errors.province = "El campo provincia es obligatorio.";
+          if (!values.status) errors.status = "Este es obligatorio.";
 
           return errors;
         }}
         onSubmit={async (values) => {
           // const r = await readAndUpload(values.avatar)
-          console.log('r');
+          console.log("r");
 
           // newPet(values);
           // history.push('/');
         }}
       >
-        {({ values, errors, touched, handleChange, handleBlur, setFieldValue }) => (
+        {({
+          values,
+          errors,
+          touched,
+          handleChange,
+          handleBlur,
+          setFieldValue,
+        }) => (
           <div className="form__big-container">
             <Form className="form__container">
               <div className="form__box">
@@ -90,7 +106,9 @@ export const NewPet = () => {
                   <option value="gato">Gato</option>
                   <option value="otros">Otros</option>
                 </InputSelect>
-                {touched.type && errors.type && <div className="form__error">{errors.type}</div>}
+                {touched.type && errors.type && (
+                  <div className="form__error">{errors.type}</div>
+                )}
               </div>
               <div className="form__box">
                 <Input
@@ -102,7 +120,9 @@ export const NewPet = () => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                 />
-                {touched.name && errors.name && <div className="form__error">{errors.name}</div>}
+                {touched.name && errors.name && (
+                  <div className="form__error">{errors.name}</div>
+                )}
               </div>
               <div className="form__box">
                 <Input
@@ -114,7 +134,9 @@ export const NewPet = () => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                 />
-                {touched.age && errors.age && <div className="form__error">{errors.age}</div>}
+                {touched.age && errors.age && (
+                  <div className="form__error">{errors.age}</div>
+                )}
               </div>
               <div className="form__box-radio">
                 <p className="form__radio-label">Sexo</p>
@@ -134,7 +156,9 @@ export const NewPet = () => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                 />
-                {touched.sex && errors.sex && <div className="form__error">{errors.sex}</div>}
+                {touched.sex && errors.sex && (
+                  <div className="form__error">{errors.sex}</div>
+                )}
               </div>
               <div className="form__box">
                 <Input
@@ -146,7 +170,9 @@ export const NewPet = () => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                 />
-                {touched.breed && errors.breed && <div className="form__error">{errors.breed}</div>}
+                {touched.breed && errors.breed && (
+                  <div className="form__error">{errors.breed}</div>
+                )}
               </div>
               <div className="form__box">
                 <InputSelect
@@ -160,7 +186,9 @@ export const NewPet = () => {
                   <option value="mediano">Mediano</option>
                   <option value="grande">Grande</option>
                 </InputSelect>
-                {touched.size && errors.size && <div className="form__error">{errors.size}</div>}
+                {touched.size && errors.size && (
+                  <div className="form__error">{errors.size}</div>
+                )}
               </div>
               <div className="form__box">
                 <InputSelect
@@ -170,12 +198,19 @@ export const NewPet = () => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                 >
-                  {provinces.map((e) => (<option value={e.value} key={e.name}>{e.name}</option>))};
+                  {provinces.map((e) => (
+                    <option value={e.value} key={e.name}>
+                      {e.name}
+                    </option>
+                  ))}
+                  ;
                 </InputSelect>
-                {touched.province && errors.province && <div className="form__error">{errors.province}</div>}
+                {touched.province && errors.province && (
+                  <div className="form__error">{errors.province}</div>
+                )}
               </div>
               <div className="form__box-radio">
-              <p className="form__radio-label">¿Está vacunado?</p>
+                <p className="form__radio-label">¿Está vacunado?</p>
                 <Input
                   type="radio"
                   name="isVaccinated"
@@ -192,10 +227,12 @@ export const NewPet = () => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                 />
-                {touched.isVaccinated && errors.isVaccinated && <div className="form__error">{errors.isVaccinated}</div>}
+                {touched.isVaccinated && errors.isVaccinated && (
+                  <div className="form__error">{errors.isVaccinated}</div>
+                )}
               </div>
               <div className="form__box-radio">
-              <p className="form__radio-label">¿Está esterilizado?</p>
+                <p className="form__radio-label">¿Está esterilizado?</p>
                 <Input
                   type="radio"
                   name="isSterilized"
@@ -212,10 +249,12 @@ export const NewPet = () => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                 />
-                {touched.isSterilized && errors.isSterilized && <div className="form__error">{errors.isSterilized}</div>}
+                {touched.isSterilized && errors.isSterilized && (
+                  <div className="form__error">{errors.isSterilized}</div>
+                )}
               </div>
               <div className="form__box-radio">
-              <p className="form__radio-label">¿Está desparasitado?</p>
+                <p className="form__radio-label">¿Está desparasitado?</p>
                 <Input
                   type="radio"
                   name="isDewormed"
@@ -232,10 +271,12 @@ export const NewPet = () => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                 />
-                {touched.isDewormed && errors.isDewormed && <div className="form__error">{errors.isDewormed}</div>}
+                {touched.isDewormed && errors.isDewormed && (
+                  <div className="form__error">{errors.isDewormed}</div>
+                )}
               </div>
               <div className="form__box-radio">
-              <p className="form__radio-label">¿Tiene microchip?</p>
+                <p className="form__radio-label">¿Tiene microchip?</p>
                 <Input
                   type="radio"
                   name="microchip"
@@ -252,7 +293,9 @@ export const NewPet = () => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                 />
-                {touched.microchip && errors.microchip && <div className="form__error">{errors.microchip}</div>}
+                {touched.microchip && errors.microchip && (
+                  <div className="form__error">{errors.microchip}</div>
+                )}
               </div>
               <div className="form__box">
                 <InputSelect
@@ -262,33 +305,35 @@ export const NewPet = () => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                 >
-                  {user.user.role === 'shelter'
-                  ?
-                  <>
-                    <option value='adopción'>Adopción</option>
-                    <option value='casa de acogida'>Casa de acogida</option>
-                    <option value='ambas'>Ambas</option>
-                  </>
-                  :
-                  <option value='perdido'>Perdido</option>
-                  }
+                  {user.role === "shelter" ? (
+                    <>
+                      <option value="adopción">Adopción</option>
+                      <option value="casa de acogida">Casa de acogida</option>
+                      <option value="ambas">Ambas</option>
+                    </>
+                  ) : (
+                    <option value="perdido">Perdido</option>
+                  )}
                 </InputSelect>
-                {touched.status && errors.status && <div className="form__error">{errors.status}</div>}
+                {touched.status && errors.status && (
+                  <div className="form__error">{errors.status}</div>
+                )}
               </div>
               <div className="form__box">
-              <Input
-                type="file"
-                name="avatar"
-                placeholder="Imagen de portada"
-                label="Imagen de portada"
-                onChange={(e) => {
-                  setFieldValue("avatar", e.target.files[0])
-                }}
-                onBlur={handleBlur}
-              />
-              {touched.avatar && errors.avatar && <div className="form__error">{errors.avatar}</div>}
-            </div>
-              
+                <Input
+                  type="file"
+                  name="avatar"
+                  placeholder="Imagen de portada"
+                  label="Imagen de portada"
+                  onChange={(e) => {
+                    setFieldValue("avatar", e.target.files[0]);
+                  }}
+                  onBlur={handleBlur}
+                />
+                {touched.avatar && errors.avatar && (
+                  <div className="form__error">{errors.avatar}</div>
+                )}
+              </div>
 
               <div className="form__button-box">
                 <Button type="submit">Registrarse</Button>
@@ -296,8 +341,7 @@ export const NewPet = () => {
             </Form>
           </div>
         )}
-
       </Formik>
     </>
-  )
-}
+  );
+};

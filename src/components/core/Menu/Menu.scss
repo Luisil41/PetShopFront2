@@ -37,7 +37,8 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background: linear-gradient(to bottom, $color-primary, $color-secondary);
+      // background: linear-gradient(to bottom, $color-primary, $color-secondary);
+      background-color: $color-white;
 
       .element__link {
           font-size: 12pt;
