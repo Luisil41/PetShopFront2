@@ -1,0 +1,19 @@
+@import '../../../index.scss';
+
+.request {
+    &__message-box {
+        border: solid 1px $color-primary;
+        background-color: $color-secondary;
+        padding: 10px;
+    }
+    &__buttons-box {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+    &__small-text {
+        font-size: 11px;
+        color: rgb(155, 155, 155);
+        margin: 15px 0;
+    }
+}

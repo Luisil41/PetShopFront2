@@ -48,13 +48,13 @@ export const ShelterProfile = ({ id }) => {
           />
         </div>
         <div className="b-container__boxinfo">
-          <h3 className="b-container__name">{shelter.name}</h3>
-          <p className="b-container__address"><FontAwesomeIcon icon={faMapMarkerAlt} /> {shelter.address}, {shelter.province}</p>
-          <p className="b-container__phone"><FontAwesomeIcon icon={faPhoneAlt} /> {shelter.phone}</p>
+          <h3 className="b-container__name">{shelter?.name}</h3>
+          <p className="b-container__address"><FontAwesomeIcon icon={faMapMarkerAlt} /> {shelter?.address}, {shelter?.province}</p>
+          <p className="b-container__phone"><FontAwesomeIcon icon={faPhoneAlt} /> {shelter?.phone}</p>
         </div>
         <div className="b-container__boxdesc">
           <h4 className="b-container__titledesc">Descripción</h4>
-          <p className="b-container__desc">{shelter.description}</p>
+          <p className="b-container__desc">{shelter?.description}</p>
         </div>
         <div className="b-container__boxpets">
           <h4 className="b-container__titlepets">Mascotas</h4>

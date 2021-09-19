@@ -61,7 +61,7 @@ export const UserRegister = ({ funct }) => {
         // const r = await readAndUpload(values.avatar)
         console.log('r');
 
-        // userRegisterFetch(values);
+        userRegisterFetch(values);
         // history.push('/');
       }}
     >

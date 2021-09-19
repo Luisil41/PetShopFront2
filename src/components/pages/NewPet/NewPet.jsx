@@ -35,7 +35,7 @@ export const NewPet = () => {
           isSterilized: "",
           isDewormed: "",
           microchip: "",
-          province: user.user.province,
+          province: user.province,
           status: "",
           avatar: "",
         }}
@@ -78,9 +78,8 @@ export const NewPet = () => {
         }}
         onSubmit={async (values) => {
           // const r = await readAndUpload(values.avatar)
-          console.log("r");
 
-          // newPet(values);
+          newPet(values);
           // history.push('/');
         }}
       >
@@ -336,7 +335,7 @@ export const NewPet = () => {
               </div>
 
               <div className="form__button-box">
-                <Button type="submit">Registrarse</Button>
+                <Button type="submit">Añadir mascota</Button>
               </div>
             </Form>
           </div>
