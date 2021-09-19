@@ -1,14 +1,12 @@
-import React from 'react';
-import { Header } from '../../core/Header/Header';
+import React, { useContext } from 'react';
+import { Redirect } from "react-router-dom";
+import { UserContext } from "../../../App";
 import { LoginScreen } from '../../pages/LoginScreen/LoginScreen';
-import { Menu } from '../../core/Menu/Menu';
 
 export const LoginLayout = () => {
-    return (
-        <>
-            <Header title="RescueMe!"/>
-            <LoginScreen />
-            <Menu />
-        </>
-    )
+    const user = useContext(UserContext);
+
+    if (user.user === null) return <div>Cargando...</div>
+    if (user.user === false) return <LoginScreen />
+    if (user.user) return <Redirect to="/profile" />
 }

@@ -15,14 +15,19 @@ export const LoginScreen = () => {
 
     return (
         <>
-        <AppBar position="static">
-            <Tabs value={selectedTab} onChange={handleChange}>
-                <Tab label="Usuario" className="user"/>
-                <Tab label="Protectora" className="shelter"/>
-            </Tabs>
-        </AppBar>
-        {selectedTab === 0 && <Login forUser={true} />}
-        {selectedTab === 1 && <Login forUser={false} />}
+            <AppBar position="static">
+                <Tabs value={selectedTab} onChange={handleChange}>
+                    <Tab label="Usuario" className="user" />
+                    <Tab label="Protectora" className="shelter" />
+                </Tabs>
+            </AppBar>
+            {selectedTab === 0 && <Login forUser={true} />}
+            {selectedTab === 1 && <Login forUser={false} />}
+            <hr />
+            <div className="register__box">
+                <p className="register__title">¿Aún no tienes cuenta?</p>
+                <span className="register__button">REGISTRARSE AHORA</span>
+            </div>
         </>
     )
 }

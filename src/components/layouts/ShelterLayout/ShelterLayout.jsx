@@ -1,6 +1,4 @@
 import React, { useContext } from 'react';
-import { Header } from '../../core/Header/Header';
-import { Menu } from '../../core/Menu/Menu';
 import { ShelterPage } from '../../pages/ShelterPage/ShelterPage';
 import { UserContext } from '../../../App';
 
@@ -10,11 +8,7 @@ export const ShelterLayout = () => {
 
     return (
         <>
-            <Header title="RescueMe!"/>
-
             <ShelterPage />
-
-            <Menu />
         </>
     )
 }
