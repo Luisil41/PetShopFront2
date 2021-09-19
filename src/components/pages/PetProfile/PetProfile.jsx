@@ -9,14 +9,12 @@ import { faCat } from "@fortawesome/free-solid-svg-icons";
 import { faDog } from "@fortawesome/free-solid-svg-icons";
 import { faDove } from "@fortawesome/free-solid-svg-icons";
 
-// esto no sirve import PetCard from "../../shared/PetCard/PetCard";
-import "./ShelterProfile.scss";
-
 export const PetProfile = ({ id }) => {
   const [pet, setPet] = useState({});
 
   const getPet = async () => {
     const petFetch = await profilePet(id);
+    console.log(petFetch);
     setPet(petFetch);
   };
   const url =
@@ -53,7 +51,7 @@ export const PetProfile = ({ id }) => {
         <div className="b-container__boxinfo">
           <h3 className="b-container__name">{pet?.name}</h3>
           <p className="b-container__phone">
-            {pet.icon} {' '} {shelter?.phone}
+            {pet.icon} {' '} {pet?.breed}
           </p>
           <p className="b-container__address">
             <FontAwesomeIcon icon={faMapMarkerAlt} /> {pet?.province}
@@ -61,7 +59,14 @@ export const PetProfile = ({ id }) => {
         </div>
         <div className="b-container__boxdesc">
           <h4 className="b-container__titledesc">Descripción</h4>
-          <p className="b-container__desc"></p>
+          <p className="b-container__desc">Edad: {pet?.age}</p>
+          <p className="b-container__desc">Sexo: {pet?.sex}</p>
+          <p className="b-container__desc">Tamaño: {pet?.size}</p>
+          <p className="b-container__desc">Vacunación: {pet?.isVaccinated}</p>
+          <p className="b-container__desc">Desparacitado: {pet?.isDewormed}</p>
+          <p className="b-container__desc">Esterilizado: {pet?.isSterilized}</p>
+          <p className="b-container__desc">Microchip: {pet?.microchip}</p>
+          <p className="b-container__desc">Protectora: {pet?.shelter}</p>
         </div>
         <div className="b-container__boxbtn">
           <Button type="button" className="button">
@@ -78,5 +83,5 @@ export const PetProfile = ({ id }) => {
         </div>
       </div>
     </>
-  );
+  )
 };

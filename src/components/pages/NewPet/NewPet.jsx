@@ -93,6 +93,7 @@ export const NewPet = () => {
         }) => (
           <div className="form__big-container">
             <Form className="form__container">
+              {user.user.role === 'shelter' ? <Input type="hidden" name="shelter" value={user.user._id} /> : <Input type="hidden" name="user" value={user.user._id} />}
               <div className="form__box">
                 <InputSelect
                   name="type"

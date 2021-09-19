@@ -1,11 +1,12 @@
 import React, { useContext } from "react";
-import UserContext from '../../../App';
+import { UserContext }from '../../../App';
+
 import "./RequestCard.scss";
 
 export const RequestCard = ({ user, pet, shelter }) => {
 
   const userGlobal = useContext(UserContext);
-  console.log(userGlobal);
+  
   if(userGlobal?.user.role === "user"){
     return (
     <>
