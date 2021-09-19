@@ -34,10 +34,10 @@ export const Login = ({ forUser }) => {
                 onSubmit={async (values, { resetForm }) => {
                     if(forUser) {
                         const res = await userLogin(values);
-                        user.user.setUser(res);
+                        user.setUser(res);          
                     }else {
                         const res = await shelterLogin(values);
-                        user.user.setUser(res);
+                        user.setUser(res);
                     }
                     resetForm();
                 }}

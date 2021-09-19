@@ -6,10 +6,12 @@ import { acceptedRequest, deniedRequest, getRequest } from '../../../api/request
 
 import { Button } from "../../shared/Button/Button";
 
+import { UserContext } from '../../../App';
+
 import './PetRequest.scss'
 
-export const PetRequest = ({ id }) => {
-
+export const PetRequest = ({ id, isUser }) => {
+  const user = useContext(UserContext);
   const [request, setRequest] = useState({});
 
   const requestFetch = async () => {
@@ -23,46 +25,67 @@ export const PetRequest = ({ id }) => {
 
   const { petId, shelterId, userId, message } = request;
 
-  return (
-    <>
-      <div>
-        <h3>Solicitud de {userId?.fullName}</h3>
-        <p>El usuario {userId?.fullName} ha enviado una nueva solicitud para {petId?.name}. Revisa su perfil desde <Link to={`/profile/${userId?._id}`}>este link</Link> y no lo hagas esperar!</p>
-        <h4>Aquí va su mensaje:</h4>
-        <div className="request__message-box">
-          <p>{message}</p>
+  if (!isUser) {
+    return (
+      <>
+        <div>
+          <h3>Solicitud de {userId?.fullName}</h3>
+          <p>El usuario {userId?.fullName} ha enviado una nueva solicitud para {petId?.name}. Revisa su perfil desde <Link to={`/profile/${userId?._id}`}>este link</Link> y no lo hagas esperar!</p>
+          <h4>Aquí va su mensaje:</h4>
+          <div className="request__message-box">
+            <p>{message}</p>
+          </div>
+          <p className="request__small-text">Desde su perfil podrás acceder y descargar su formulario de adopción.</p>
+        </div><div className="request__buttons-box">
+          <Formik
+            initialValues={{
+              accepted: "",
+            }}
+            onSubmit={async () => {
+              await acceptedRequest(id);
+            }}
+          >
+            {() => (
+
+              <Form>
+                <div className="form__button-box">
+                  <Button type="submit" name='accepted'>Aceptar</Button>
+                </div>
+              </Form>
+            )}
+          </Formik>
+          <Formik
+            initialValues={{
+              denied: "",
+            }}
+            onSubmit={async () => {
+              await deniedRequest(id);
+            }}
+          >
+            {() => (
+              <Form>
+                <div className="form__button-box">
+                  <Button type="submit" name="denied">Rechazar</Button>
+                </div>
+              </Form>
+            )}
+          </Formik>
         </div>
-        <p className="request__small-text">Desde su perfil podrás acceder y descargar su formulario de adopción.</p>
-      </div>
-      <div className="request__buttons-box">
-      <Formik
-        onSubmit={async () => {
-          await acceptedRequest(id);
-        }}
-      >
-        {() => (
-            <Form>
-              <div className="form__button-box">
-                <Button type="submit">Aceptar</Button>
-              </div>
-            </Form>
-        )}
-      </Formik>
-      <Formik
-        onSubmit={async () => {
-          await deniedRequest(id);
-        }}
-      >
-        {() => (
-            <Form>
-              <div className="form__button-box">
-                <Button type="submit">Rechazar</Button>
-              </div>
-            </Form>
-        )}
-      </Formik>
-      </div>
-      <hr />
-    </>
-  )
+        <hr />
+      </>
+    )
+  } else {
+    return (
+      <>
+        <div>
+          <h3>Solicitud para {petId?.name}</h3>
+          <p>Tu solicitud para {petId?.name} ya ha sido enviada a {shelterId?.name}.</p>
+        </div>
+        <div className="request__buttons-box">
+          <p>El estado de tu solicitud es: {request.status}</p>
+        </div>
+        <hr />
+      </>
+    )
+  }
 }

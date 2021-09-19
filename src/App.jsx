@@ -9,6 +9,7 @@ import { RegisterLayout } from "./components/layouts/RegisterLayout/RegisterLayo
 import { LostPetsLayout } from "./components/layouts/LostPetsLayout/LostPetsLayout";
 import { NewPetLayout } from "./components/layouts/NewPetLayout/NewPetLayout";
 import { AllRequestsLayout } from './components/layouts/AllRequestsLayout/AllRequestsLayout';
+import { RequestLayout } from './components/layouts/RequestLayout/RequestLayout';
 
 import "./App.scss";
 import {
@@ -22,6 +23,7 @@ export const UserContext = React.createContext(null);
 
 function App() {
   const [user, setUser] = useState(false);
+  console.log(user);
 
   const checkUserSession = async () => {
     const userFetch = await checkSession();
@@ -29,8 +31,6 @@ function App() {
       setUser(false);
     } else if (userFetch) {
       setUser(userFetch);
-    } else {
-      setUser(false);
     }
   };
 
@@ -45,6 +45,7 @@ function App() {
         <div className="main__container">
           <Switch>
             <Route path="/requests" exact component={AllRequestsLayout} />
+            <Route path="/requests/:id" component={RequestLayout} />
             <Route path="/pet/add" exact component={NewPetLayout} />
             <Route path="/pet/lost" exact component={LostPetsLayout} />
             <Route path="/register" exac component={RegisterLayout} />

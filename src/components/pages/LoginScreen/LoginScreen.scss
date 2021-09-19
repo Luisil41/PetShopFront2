@@ -1,13 +1,33 @@
+@import '../../../index.scss';
+
 .css-heg063-MuiTabs-flexContainer{
     display:flex;
     justify-content: center;
-    background-color: white;
+    background-color: $color-white;
 }
 
 .user{
-    color: #fdcb6e !important;
+    color: $color-primary !important;
 }
 
 .shelter{
-    color: #fdcb6e !important;
+    color: $color-primary !important;
+}
+
+.register {
+    &__box{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    } 
+    &__button {
+        background-color: $color-secondary;
+        padding: 8px 16px;
+        border: 2px solid $color-primary;
+        border-radius: 10px;
+        color: $color-black;
+        font-weight: bold;
+        font-size: 16px;
+    }
 }
