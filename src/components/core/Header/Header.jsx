@@ -9,11 +9,12 @@ export const Header = (props) => {
         <header className="header">
             <div className="logo__container">
                 <span className="logo"><FontAwesomeIcon icon={faPaw} /></span>
-                <h1 className="title">{props.title}</h1>
+                <span className="logo__title">{props.title}</span>
+                {/* <h1 className="title">{props.title}</h1> */}
             </div>
-            <div className="text__container">
+            {/* <div className="text__container">
                 <p className="text">¡Únete a nuestra comunidad y ayuda a las mascotas más necesitadas!</p>
-            </div>
+            </div> */}
         </header>
     );
 }

@@ -1,11 +1,10 @@
 import React from 'react'
 import './button.scss';
 
-export const Button = () => {
+export const Button = ({type, className, children}) => {
     return (
         <>
-            {/* <button type={type}>{children}</button> */}
-            <a href="something" className="button">Button</a>
+            <button type={type} className={className}>{children}</button>
         </>
     )
 }
