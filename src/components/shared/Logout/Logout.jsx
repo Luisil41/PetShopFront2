@@ -1,23 +1,31 @@
-import React from 'react';
-
-import { Forms } from '../Forms/Forms'
+import React, { useContext } from 'react';
+import { Formik, Form } from "formik";
 import { Button } from '../Button/Button'
-
 import { logout } from '../../../api/auth.api';
 
-export const Logout = ({ funct }) => {
+import { UserContext } from "../../../App";
 
-    const submitLogout = async (e) => {
-        e.preventDefault();
-    
-        await logout();
-    
-        funct();
-    }
+export const Logout = () => {
+    const user = useContext(UserContext);
 
     return (
-        <Forms onSubmit={submitLogout} method="POST">
-            <Button className="button" type="submit">Logout</Button>
-        </Forms>
+        <Formik
+        initialValues={{
+          logout: "",
+        }}
+        onSubmit={async () => {
+          await logout();
+          user.setUser(false); 
+        }}
+      >
+        {() => (
+
+          <Form>
+            <div className="form__button-box">
+              <Button type="submit" name='logout'>Logout</Button>
+            </div>
+          </Form>
+        )}
+      </Formik>
     )
 }

@@ -2,25 +2,19 @@ import React from "react";
 
 import "./RequestCard.scss";
 
-export const RequestCard = ({ request }) => {
-    const { petId, userId, shelterId } = request
-  const href = `/requests/${request._id}`;
-
-
+export const RequestCard = ({ user, pet, shelter }) => {
   return (
     <>
       <div className="b-card">
         <div className="b-card__boxuser">
-            <h4 className="b-card__nameuser">De {userId.fullName}</h4>
+          <h4 className="b-card__nameuser">De {user?.fullName}</h4>
         </div>
         <div className="b-card__box">
           <h4 className="b-card__name">
-            <a className="b-card__link" href={href}>
-            Petición para {petId.name}
-            </a>
+              Petición para {pet?.name}
           </h4>
           <p className="b-card__loc">
-            Protectora {shelterId.name}
+            Protectora {shelter?.name}
           </p>
         </div>
       </div>

@@ -27,13 +27,12 @@ export const ShelterRegister = () => {
   };
 
   const readAndUpload = (imagen) => {
+    // return new Promise((res, rej) => {
+    // })
     const reader = new FileReader();
     reader.readAsDataURL(imagen);
-    reader.onloadend = async() => {
-      const respuesta = await uploadImage(reader.result);
-      setTimeout(()=>{
-        console.log(respuesta);
-      }, 3000)
+    reader.onloadend = () => {
+      uploadImage(reader.result);
     };
     reader.onerror = () => {
       console.error('Error');
@@ -97,10 +96,9 @@ export const ShelterRegister = () => {
           return errors;
         }}
         onSubmit={async(values) => {
-          const r = await readAndUpload(values.avatar)
-          console.log('r', r);
+          // const r = await readAndUpload(values.avatar)
 
-          // shelterRegister(values);
+          shelterRegister(values);
           // history.push('/');
         }}
       >
