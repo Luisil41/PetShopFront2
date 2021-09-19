@@ -17,7 +17,7 @@ export const NewPet = () => {
   return (
     <>
       <div>
-        {user.role === "shelter" ? (
+        {user.user.role === "shelter" ? (
           <h3 className="main__title">Añade una nueva mascota</h3>
         ) : (
           <h3 className="main__title">¿Se ha perdido tu mascota?</h3>
@@ -305,7 +305,7 @@ export const NewPet = () => {
                   onChange={handleChange}
                   onBlur={handleBlur}
                 >
-                  {user.role === "shelter" ? (
+                  {user.user.role === "shelter" ? (
                     <>
                       <option value="adopción">Adopción</option>
                       <option value="casa de acogida">Casa de acogida</option>

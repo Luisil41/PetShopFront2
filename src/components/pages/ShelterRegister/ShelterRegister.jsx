@@ -96,7 +96,7 @@ export const ShelterRegister = () => {
           return errors;
         }}
         onSubmit={async(values) => {
-          const r = await readAndUpload(values.avatar)
+          // const r = await readAndUpload(values.avatar)
 
           shelterRegister(values);
           // history.push('/');

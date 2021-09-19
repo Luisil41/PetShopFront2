@@ -8,7 +8,7 @@ import { LoginLayout } from "./components/layouts/LoginLayout/LoginLayout";
 import { RegisterLayout } from "./components/layouts/RegisterLayout/RegisterLayout";
 import { LostPetsLayout } from "./components/layouts/LostPetsLayout/LostPetsLayout";
 import { NewPetLayout } from "./components/layouts/NewPetLayout/NewPetLayout";
-import { RequestLayout } from './components/layouts/RequestLayout/RequestLayout'
+import { AllRequestsLayout } from './components/layouts/AllRequestsLayout/AllRequestsLayout';
 
 import "./App.scss";
 import {
@@ -25,7 +25,7 @@ function App() {
 
   const checkUserSession = async () => {
     const userFetch = await checkSession();
-    if(userFetch === "Necesitas logearte para acceder.") {
+    if (userFetch === "Necesitas logearte para acceder.") {
       setUser(false);
     } else if (userFetch) {
       setUser(userFetch);
@@ -36,37 +36,22 @@ function App() {
 
   useEffect(() => {
     checkUserSession();
-    console.log('usuario', user);
   }, []);
 
   return (
-    <UserContext.Provider value={user}>
+    <UserContext.Provider value={{user, setUser}}>
       <Router>
         <Header title="RescueMe!" />
         <div className="main__container">
-        <Switch>
-        <Route path="/requests" exact>
-            <RequestLayout />
-          </Route>
-          <Route path="/pet/add" exact>
-            <NewPetLayout />
-          </Route>
-          <Route path="/pet/lost" exact>
-            <LostPetsLayout />
-          </Route>
-          <Route path="/register" exact>
-            <RegisterLayout />
-          </Route>
-          <Route path="/login" exact>
-            <LoginLayout />
-          </Route>
-          <Route path="/profile" exact>
-            <ProfileLayout />
-          </Route>
-          <Route path="/">
-            <HomeLayout />
-          </Route>
-        </Switch>
+          <Switch>
+            <Route path="/requests" exact component={AllRequestsLayout} />
+            <Route path="/pet/add" exact component={NewPetLayout} />
+            <Route path="/pet/lost" exact component={LostPetsLayout} />
+            <Route path="/register" exac component={RegisterLayout} />
+            <Route path="/login" exact component={LoginLayout} />
+            <Route path="/profile" exact component={ProfileLayout} />
+            <Route path="/" component={HomeLayout} />
+          </Switch>
         </div>
         <Menu />
       </Router>

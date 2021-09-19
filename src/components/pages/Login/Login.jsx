@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Formik, Form } from 'formik';
 
 import { shelterLogin, userLogin } from '../../../api/auth.api';
 import { Input } from '../../shared/Input/Input'
 import { Button } from '../../shared/Button/Button'
 
+import { UserContext } from "../../../App";
+
 export const Login = ({ forUser }) => {
+    const user = useContext(UserContext);
     return (
         <>
             <Formik
@@ -30,9 +33,11 @@ export const Login = ({ forUser }) => {
                 }}
                 onSubmit={async (values, { resetForm }) => {
                     if(forUser) {
-                        await userLogin(values);
+                        const res = await userLogin(values);
+                        user.user.setUser(res);
                     }else {
-                        await shelterLogin(values);
+                        const res = await shelterLogin(values);
+                        user.user.setUser(res);
                     }
                     resetForm();
                 }}
