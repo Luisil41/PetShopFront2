@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { Formik, Form } from "formik";
 
 import { acceptedRequest, deniedRequest, getRequest } from '../../../api/request.api';
@@ -13,6 +13,7 @@ import './PetRequest.scss'
 export const PetRequest = ({ id, isUser }) => {
   const user = useContext(UserContext);
   const [request, setRequest] = useState({});
+  const [toNext, setToNext] = useState(false)
 
   const requestFetch = async () => {
     const requestValues = await getRequest(id);
@@ -43,11 +44,13 @@ export const PetRequest = ({ id, isUser }) => {
             }}
             onSubmit={async () => {
               await acceptedRequest(id);
+              setToNext(true)
             }}
           >
             {() => (
 
               <Form>
+                {toNext ? <Redirect to="/requests" /> : null}
                 <div className="form__button-box">
                   <Button type="submit" name='accepted'>Aceptar</Button>
                 </div>
@@ -60,10 +63,12 @@ export const PetRequest = ({ id, isUser }) => {
             }}
             onSubmit={async () => {
               await deniedRequest(id);
+              setToNext(true)
             }}
           >
             {() => (
               <Form>
+                {toNext ? <Redirect to="/requests" /> : null}
                 <div className="form__button-box">
                   <Button type="submit" name="denied">Rechazar</Button>
                 </div>
