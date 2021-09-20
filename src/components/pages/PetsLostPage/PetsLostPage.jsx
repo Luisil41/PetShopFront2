@@ -16,6 +16,7 @@ export function PetsLostPage() {
         if (el.status === 'perdido'){
             lostPets.push(el);
         }
+        return;
     })
 
     useEffect(() => {

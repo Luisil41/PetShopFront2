@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { deleteShelter, profileShelter } from "../../../api/shelter.api";
 import { Button } from "../../shared/Button/Button";
 import { Forms } from "../../shared/Forms/Forms";
@@ -6,13 +7,12 @@ import { Logout } from "../../shared/Logout/Logout";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import { faPhoneAlt } from "@fortawesome/free-solid-svg-icons";
-import { getAllPets } from "../../../api/pet.api";
 import { PetCard } from "../../shared/PetCard/PetCard";
 
 // esto no sirve import PetCard from "../../shared/PetCard/PetCard";
 import "./ShelterProfile.scss";
 
-export const ShelterProfile = ({ id }) => {
+export const ShelterProfile = ({ id, editUrl }) => {
   const [shelter, setShelter] = useState({});
 
   const getShelter = async () => {
@@ -27,7 +27,6 @@ export const ShelterProfile = ({ id }) => {
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
   };
-  const pets = shelter.pets;
 
   useEffect(() => {
     getShelter();
@@ -58,14 +57,20 @@ export const ShelterProfile = ({ id }) => {
           <h4 className="b-container__titledesc">Descripción</h4>
           <p className="b-container__desc">{shelter?.description}</p>
         </div>
+        {shelter.pets ? 
         <div className="b-container__boxpets">
           <h4 className="b-container__titlepets">Mascotas</h4>
-          {/* {pets.map((el) => (<PetCard key={el._id} pet={el}/>))} */}
+          {shelter?.pets.map((el) => (<PetCard key={el._id} pet={el}/>))}
         </div>
+        :
+        null
+        }
         <div className="b-container__boxbtn">
+        <Link to="/shelter/edit">
           <Button type="button" className="button">
             Editar
           </Button>
+          </Link>
           <Forms onSubmit={submitForm} method="DELETE">
             <Button type="submit" className="button">
               Eliminar

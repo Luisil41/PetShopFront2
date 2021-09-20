@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Redirect } from 'react-router';
 import { Formik, Form } from 'formik';
 
 import { userRegisterFetch } from '../../../api/auth.api';
@@ -10,8 +11,9 @@ import provinces from '../../../utils/provinces';
 
 
 export const UserRegister = ({ funct }) => {
-  return (
-    <>
+const [toNext, setToNext] = useState(false)
+return (
+  <>
     <Formik
       initialValues={{
         fullName: '',
@@ -57,17 +59,20 @@ export const UserRegister = ({ funct }) => {
 
         return errors;
       }}
-      onSubmit={async(values) => {
+      onSubmit={async (values) => {
         // const r = await readAndUpload(values.avatar)
         console.log('r');
 
         userRegisterFetch(values);
+        setToNext(true)
+
         // history.push('/');
       }}
     >
       {({ values, errors, touched, handleChange, handleBlur, setFieldValue }) => (
         <div className="form__big-container">
           <Form className="form__container">
+            {toNext ? <Redirect to="/profile" /> : null}
             <div className="form__box">
               <Input
                 type="text"
@@ -163,5 +168,5 @@ export const UserRegister = ({ funct }) => {
 
     </Formik>
   </>
-  )
+)
 }

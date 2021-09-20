@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, Redirect } from "react-router-dom";
 import { Formik, Form } from "formik";
 
@@ -6,12 +6,9 @@ import { acceptedRequest, deniedRequest, getRequest } from '../../../api/request
 
 import { Button } from "../../shared/Button/Button";
 
-import { UserContext } from '../../../App';
-
 import './PetRequest.scss'
 
 export const PetRequest = ({ id, isUser }) => {
-  const user = useContext(UserContext);
   const [request, setRequest] = useState({});
   const [toNext, setToNext] = useState(false)
 

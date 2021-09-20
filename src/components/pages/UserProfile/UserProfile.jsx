@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { deleteUser, profileUser } from "../../../api/user.api";
 import { Button } from "../../shared/Button/Button";
 import { Forms } from "../../shared/Forms/Forms";
@@ -6,10 +7,6 @@ import { Logout } from "../../shared/Logout/Logout";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
-
-import { faPhoneAlt } from "@fortawesome/free-solid-svg-icons";
-import { getAllPets } from "../../../api/pet.api";
-import { PetCard } from "../../shared/PetCard/PetCard";
 
 // esto no sirve import PetCard from "../../shared/PetCard/PetCard";
 
@@ -67,9 +64,11 @@ export const UserProfile = ({ id }) => {
           )}
         </div>
         <div className="b-container__boxbtn">
-          <Button type="button" className="button">
-            Editar
-          </Button>
+          <Link to="/user/edit">
+            <Button type="button" className="button">
+              Editar
+            </Button>
+          </Link>
           <Forms onSubmit={submitForm} method="DELETE">
             <Button type="submit" className="button">
               Eliminar

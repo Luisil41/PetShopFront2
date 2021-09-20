@@ -11,11 +11,6 @@ import { faUser } from "@fortawesome/free-solid-svg-icons";
 import "./Menu.scss";
 
 export function Menu() {
-  const [value, setValue] = React.useState("recents");
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
 
   return (
     <>

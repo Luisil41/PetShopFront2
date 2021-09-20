@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Redirect } from 'react-router';
 import { Formik, Form } from 'formik';
 
 import { shelterRegister } from '../../../api/auth.api';
@@ -9,37 +10,39 @@ import { Button } from '../../shared/Button/Button';
 import provinces from '../../../utils/provinces';
 
 export const ShelterRegister = () => {
+  const [toNext, setToNext] = useState(false)
 
-  const uploadImage = async (base64EncodedImage) => {
-    try {
-      const req = await fetch('http://localhost:3000/user/subir-imagen', {
-        method: 'POST',
-        body: JSON.stringify({ data: base64EncodedImage }),
-        headers: { 'Content-Type': 'application/json' },
-      });
 
-      const response = await req.json();
+  // const uploadImage = async (base64EncodedImage) => {
+  //   try {
+  //     const req = await fetch('http://localhost:3000/user/subir-imagen', {
+  //       method: 'POST',
+  //       body: JSON.stringify({ data: base64EncodedImage }),
+  //       headers: { 'Content-Type': 'application/json' },
+  //     });
 
-      return response;
-    } catch (err) {
-      console.error(err);
-    }
-  };
+  //     const response = await req.json();
 
-  const readAndUpload = (imagen) => {
-    // return new Promise((res, rej) => {
-    // })
-    const reader = new FileReader();
-    reader.readAsDataURL(imagen);
-    reader.onloadend = () => {
-      uploadImage(reader.result);
-    };
-    reader.onerror = () => {
-      console.error('Error');
-    };
+  //     return response;
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  // };
 
-    return;
-  }
+  // const readAndUpload = (imagen) => {
+  //   // return new Promise((res, rej) => {
+  //   // })
+  //   const reader = new FileReader();
+  //   reader.readAsDataURL(imagen);
+  //   reader.onloadend = () => {
+  //     uploadImage(reader.result);
+  //   };
+  //   reader.onerror = () => {
+  //     console.error('Error');
+  //   };
+
+  //   return;
+  // }
 
   return (
     <>
@@ -95,16 +98,19 @@ export const ShelterRegister = () => {
 
           return errors;
         }}
-        onSubmit={async(values) => {
+        onSubmit={async (values) => {
           // const r = await readAndUpload(values.avatar)
 
           shelterRegister(values);
+          setToNext(true)
+
           // history.push('/');
         }}
       >
         {({ values, errors, touched, handleChange, handleBlur, setFieldValue }) => (
           <div className="form__big-container">
             <Form className="form__container">
+              {toNext ? <Redirect to="/profile" /> : null}
               <div className="form__box">
                 <Input
                   type="text"

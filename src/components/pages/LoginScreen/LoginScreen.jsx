@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
 import { Tabs, Tab, AppBar } from '@material-ui/core';
 
 import './LoginScreen.scss';
@@ -26,7 +27,7 @@ export const LoginScreen = () => {
             <hr />
             <div className="register__box">
                 <p className="register__title">¿Aún no tienes cuenta?</p>
-                <span className="register__button">REGISTRARSE AHORA</span>
+                <Link to="/register" className="Link"><span className="register__button">REGISTRARSE AHORA</span></Link>
             </div>
         </>
     )

@@ -13,6 +13,7 @@ import { RequestLayout } from './components/layouts/RequestLayout/RequestLayout'
 import { NewFormLayout } from "./components/layouts/NewFormLayout/NewFormLayout";
 import { UserEditLayout } from "./components/layouts/UserEditLayout/UserEditLayout";
 import { PetProfileLayout } from "./components/layouts/PetProfileLayout/PetProfileLayout";
+import { ShelterEditLayout } from "./components/layouts/ShelterEditLayout/ShelterEditLayout";
 
 import "./App.scss";
 import {
@@ -49,6 +50,7 @@ function App() {
           <Switch>
             <Route path="/user/new-form" exact component={NewFormLayout} />
             <Route path="/user/edit" exact component={UserEditLayout} />
+            <Route path="/shelter/edit" exact component={ShelterEditLayout} />
             <Route path="/requests" exact component={AllRequestsLayout} />
             <Route path="/requests/:id" component={RequestLayout} />
             <Route path="/pet/add" exact component={NewPetLayout} />

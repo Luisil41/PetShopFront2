@@ -1,5 +1,5 @@
 import React from 'react';
-import { Formik, Form, ErrorMessage} from 'formik';
+import { Formik, Form } from 'formik';
 
 import './Forms.scss';
 
@@ -24,10 +24,5 @@ export const Forms = ({ initValues, onSubmit, children }) => {
 
             </Formik>
         </>
-        // <>
-        //     <form onSubmit={onSubmit} method={method} encType={enctype}>
-        //     {children}
-        //     </form>
-        // </>
     )
 }

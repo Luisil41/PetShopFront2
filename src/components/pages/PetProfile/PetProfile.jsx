@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { deletePet, profilePet } from "../../../api/pet.api";
+import React, { useEffect, useState, useContext } from "react";
+import { Link } from "react-router-dom";
+import { deletePet, profilePet, newRequest } from "../../../api/pet.api";
 import { Button } from "../../shared/Button/Button";
 import { Forms } from "../../shared/Forms/Forms";
 import { Logout } from "../../shared/Logout/Logout";
@@ -9,7 +10,11 @@ import { faCat } from "@fortawesome/free-solid-svg-icons";
 import { faDog } from "@fortawesome/free-solid-svg-icons";
 import { faDove } from "@fortawesome/free-solid-svg-icons";
 
+import { UserContext } from "../../../App";
+
 export const PetProfile = ({ id }) => {
+  const user = useContext(UserContext);
+
   const [pet, setPet] = useState({});
 
   const getPet = async () => {
@@ -68,6 +73,7 @@ export const PetProfile = ({ id }) => {
           <p className="b-container__desc">Microchip: {pet?.microchip}</p>
           <p className="b-container__desc">Protectora: {pet?.shelter}</p>
         </div>
+        {user.user.role === 'shelter' ?
         <div className="b-container__boxbtn">
           <Button type="button" className="button">
             Editar
@@ -78,9 +84,15 @@ export const PetProfile = ({ id }) => {
             </Button>
           </Forms>
         </div>
-        <div>
-          <Logout />
+        :
+        <div className="b-container__boxbtn">
+          <Link to="/requests/new">
+            <Button type="submit" className="button">
+              Solicitar adopción
+            </Button>
+          </Link>
         </div>
+      }
       </div>
     </>
   )

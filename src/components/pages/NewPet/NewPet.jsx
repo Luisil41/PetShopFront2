@@ -1,4 +1,5 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
+import { Redirect } from "react-router";
 import { Formik, Form } from "formik";
 
 import { newPet } from "../../../api/pet.api";
@@ -13,6 +14,8 @@ import { UserContext } from "../../../App";
 
 export const NewPet = () => {
   const user = useContext(UserContext);
+  const [toNext, setToNext] = useState(false)
+
 
   return (
     <>
@@ -80,6 +83,8 @@ export const NewPet = () => {
           // const r = await readAndUpload(values.avatar)
 
           newPet(values);
+        setToNext(true)
+
           // history.push('/');
         }}
       >
@@ -93,6 +98,8 @@ export const NewPet = () => {
         }) => (
           <div className="form__big-container">
             <Form className="form__container">
+            {toNext ? <Redirect to="/profile" /> : null}
+
               {user.user.role === 'shelter' ? <Input type="hidden" name="shelter" value={user.user._id} /> : <Input type="hidden" name="user" value={user.user._id} />}
               <div className="form__box">
                 <InputSelect

@@ -24,7 +24,7 @@ export function RequestByShelter({ id }) {
         }
     })
 
-    if (pendingRequests.length == 0) {
+    if (pendingRequests.length === 0) {
         return <h3>No tienes solicitudes pendientes.</h3>
     } else {
         return (

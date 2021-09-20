@@ -17,7 +17,7 @@ export function RequestByUser({ id }) {
         getRequest();
     }, []);
 
-    if (request.length == 0) {
+    if (request.length === 0) {
         return <h3>No tienes solicitudes pendientes.</h3>
     } else {
         return (
